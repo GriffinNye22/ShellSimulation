@@ -1,0 +1,59 @@
+\hypertarget{structserMsgPacket}{\section{ser\-Msg\-Packet Struct Reference}
+\label{structserMsgPacket}\index{ser\-Msg\-Packet@{ser\-Msg\-Packet}}
+}
+
+
+Union Struct T\-C\-P message packet for receiving messages on server side.  
+
+
+Inheritance diagram for ser\-Msg\-Packet\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{structserMsgPacket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structserMsgPacket_a5b29522ee436c31160f86b4d73504069}{\hyperlink{structserMsgPacket_a5b29522ee436c31160f86b4d73504069}{ser\-Msg\-Packet} ()}\label{structserMsgPacket_a5b29522ee436c31160f86b4d73504069}
+
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{structserMsgPacket}{ser\-Msg\-Packet}. \end{DoxyCompactList}\item 
+\hyperlink{structserMsgPacket_a19c1ff1a31f9adca56023d59fde6c428}{ser\-Msg\-Packet} (pid\-\_\-t \hyperlink{structmsgPacket_a294c1f456116eb9177b31ab8b5577f86}{sender}, const char \hyperlink{structmsgPacket_a8b49c124b4ca2ed872692333b71d74fd}{cmd}\mbox{[}$\,$\mbox{]}, int \hyperlink{structintRecMsgPacket_a09009e50e4f452b7fea038fcb5f8e382}{val}, char \hyperlink{structintRecMsgPacket_a4edab3e169d3d5d2ceced40d663e8055}{record}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{structserMsgPacket}{ser\-Msg\-Packet} given its elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Union Struct T\-C\-P message packet for receiving messages on server side. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structserMsgPacket_a19c1ff1a31f9adca56023d59fde6c428}{\index{ser\-Msg\-Packet@{ser\-Msg\-Packet}!ser\-Msg\-Packet@{ser\-Msg\-Packet}}
+\index{ser\-Msg\-Packet@{ser\-Msg\-Packet}!serMsgPacket@{ser\-Msg\-Packet}}
+\subsubsection[{ser\-Msg\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}ser\-Msg\-Packet\-::ser\-Msg\-Packet (
+\begin{DoxyParamCaption}
+\item[{pid\-\_\-t}]{sender, }
+\item[{const char}]{cmd\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{val, }
+\item[{char}]{record\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structserMsgPacket_a19c1ff1a31f9adca56023d59fde6c428}
+
+
+Constructs a \hyperlink{structserMsgPacket}{ser\-Msg\-Packet} given its elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The sender of the message's P\-I\-D. \\
+\hline
+{\em cmd} & The command for the message. \\
+\hline
+{\em val} & The record count or record index to be transmitted in the message. \\
+\hline
+{\em record} & The record to be transmitted in the message. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{msgPackets_8cpp}{msg\-Packets.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,74 @@
+\hypertarget{structintRecMsgPacket}{\section{int\-Rec\-Msg\-Packet Struct Reference}
+\label{structintRecMsgPacket}\index{int\-Rec\-Msg\-Packet@{int\-Rec\-Msg\-Packet}}
+}
+
+
+Sub-\/\-Struct T\-C\-P message packet for transmitting a record and its index.  
+
+
+Inheritance diagram for int\-Rec\-Msg\-Packet\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{structintRecMsgPacket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structintRecMsgPacket_a2f337aa26e3c8bf95404e3958f306c3b}{\hyperlink{structintRecMsgPacket_a2f337aa26e3c8bf95404e3958f306c3b}{int\-Rec\-Msg\-Packet} ()}\label{structintRecMsgPacket_a2f337aa26e3c8bf95404e3958f306c3b}
+
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{structintRecMsgPacket}{int\-Rec\-Msg\-Packet}. \end{DoxyCompactList}\item 
+\hyperlink{structintRecMsgPacket_af0017da02a0021d5674c88bfb9151f1e}{int\-Rec\-Msg\-Packet} (pid\-\_\-t \hyperlink{structmsgPacket_a294c1f456116eb9177b31ab8b5577f86}{sender}, const char \hyperlink{structmsgPacket_a8b49c124b4ca2ed872692333b71d74fd}{cmd}\mbox{[}$\,$\mbox{]}, int \hyperlink{structintRecMsgPacket_a09009e50e4f452b7fea038fcb5f8e382}{val}, char \hyperlink{structintRecMsgPacket_a4edab3e169d3d5d2ceced40d663e8055}{record}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Constructs an \hyperlink{structintRecMsgPacket}{int\-Rec\-Msg\-Packet} given its elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structintRecMsgPacket_a09009e50e4f452b7fea038fcb5f8e382}{val}
+\item 
+char \hyperlink{structintRecMsgPacket_a4edab3e169d3d5d2ceced40d663e8055}{record} \mbox{[}\hyperlink{msgPackets_8cpp_a0502d3369266e0f83c86f96afcd718b9}{M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}+1\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sub-\/\-Struct T\-C\-P message packet for transmitting a record and its index. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structintRecMsgPacket_af0017da02a0021d5674c88bfb9151f1e}{\index{int\-Rec\-Msg\-Packet@{int\-Rec\-Msg\-Packet}!int\-Rec\-Msg\-Packet@{int\-Rec\-Msg\-Packet}}
+\index{int\-Rec\-Msg\-Packet@{int\-Rec\-Msg\-Packet}!intRecMsgPacket@{int\-Rec\-Msg\-Packet}}
+\subsubsection[{int\-Rec\-Msg\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}int\-Rec\-Msg\-Packet\-::int\-Rec\-Msg\-Packet (
+\begin{DoxyParamCaption}
+\item[{pid\-\_\-t}]{sender, }
+\item[{const char}]{cmd\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{val, }
+\item[{char}]{record\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structintRecMsgPacket_af0017da02a0021d5674c88bfb9151f1e}
+
+
+Constructs an \hyperlink{structintRecMsgPacket}{int\-Rec\-Msg\-Packet} given its elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The sender of the message's P\-I\-D. \\
+\hline
+{\em cmd} & The command for the message. \\
+\hline
+{\em val} & The record count or record index to be transmitted in the message. \\
+\hline
+{\em record} & The record to be transmitted in the message. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structintRecMsgPacket_a4edab3e169d3d5d2ceced40d663e8055}{\index{int\-Rec\-Msg\-Packet@{int\-Rec\-Msg\-Packet}!record@{record}}
+\index{record@{record}!intRecMsgPacket@{int\-Rec\-Msg\-Packet}}
+\subsubsection[{record}]{\setlength{\rightskip}{0pt plus 5cm}int\-Rec\-Msg\-Packet\-::record}}\label{structintRecMsgPacket_a4edab3e169d3d5d2ceced40d663e8055}
+The container for the record string \hypertarget{structintRecMsgPacket_a09009e50e4f452b7fea038fcb5f8e382}{\index{int\-Rec\-Msg\-Packet@{int\-Rec\-Msg\-Packet}!val@{val}}
+\index{val@{val}!intRecMsgPacket@{int\-Rec\-Msg\-Packet}}
+\subsubsection[{val}]{\setlength{\rightskip}{0pt plus 5cm}int\-Rec\-Msg\-Packet\-::val}}\label{structintRecMsgPacket_a09009e50e4f452b7fea038fcb5f8e382}
+The record index 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{msgPackets_8cpp}{msg\-Packets.\-cpp}\end{DoxyCompactItemize}

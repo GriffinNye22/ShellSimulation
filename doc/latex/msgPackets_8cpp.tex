@@ -1,0 +1,82 @@
+\hypertarget{msgPackets_8cpp}{\section{msg\-Packets.\-cpp File Reference}
+\label{msgPackets_8cpp}\index{msg\-Packets.\-cpp@{msg\-Packets.\-cpp}}
+}
+
+
+Header file defining the various packets used to transmit data across the T\-C\-P socket connection. C\-S\-C552 Dr. Spiegel Spring 2020.  
+
+
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classstringToMonthConverter}{string\-To\-Month\-Converter}
+\begin{DoxyCompactList}\small\item\em Used to map enum values to valid input strings for the month field of new records. \end{DoxyCompactList}\item 
+struct \hyperlink{structmsgPacket}{msg\-Packet}
+\begin{DoxyCompactList}\small\item\em Base Struct T\-C\-P message packet. \end{DoxyCompactList}\item 
+struct \hyperlink{structintMsgPacket}{int\-Msg\-Packet}
+\begin{DoxyCompactList}\small\item\em Sub-\/\-Struct T\-C\-P message packet for transmitting record count \& indexes. \end{DoxyCompactList}\item 
+struct \hyperlink{structrecMsgPacket}{rec\-Msg\-Packet}
+\begin{DoxyCompactList}\small\item\em Sub-\/\-Struct T\-C\-P message packet for transmitting records. \end{DoxyCompactList}\item 
+struct \hyperlink{structintRecMsgPacket}{int\-Rec\-Msg\-Packet}
+\begin{DoxyCompactList}\small\item\em Sub-\/\-Struct T\-C\-P message packet for transmitting a record and its index. \end{DoxyCompactList}\item 
+struct \hyperlink{structlogMsgPacket}{log\-Msg\-Packet}
+\begin{DoxyCompactList}\small\item\em Sub-\/\-Struct T\-C\-P message packet for transmitting log records. \end{DoxyCompactList}\item 
+struct \hyperlink{structserMsgPacket}{ser\-Msg\-Packet}
+\begin{DoxyCompactList}\small\item\em Union Struct T\-C\-P message packet for receiving messages on server side. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{msgPackets_8cpp_a171e904112e7e608e8d56280dfd2ad6d}{C\-U\-R\-R\-E\-N\-T\-Y\-E\-A\-R}~21
+\item 
+\#define \hyperlink{msgPackets_8cpp_a66ac50a388642c37f3908540f06ff1bf}{M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}~64
+\item 
+\#define \hyperlink{msgPackets_8cpp_a0502d3369266e0f83c86f96afcd718b9}{M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}~27
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{msgPackets_8cpp_a55861a7e9de0d3e935c8e767408122bd}{M\-O\-N\-T\-H} \{ \\*
+{\bfseries J\-A\-N}, 
+{\bfseries F\-E\-B}, 
+{\bfseries M\-A\-R}, 
+{\bfseries A\-P\-R}, 
+\\*
+{\bfseries M\-A\-Y}, 
+{\bfseries J\-U\-N}, 
+{\bfseries J\-U\-L}, 
+{\bfseries A\-U\-G}, 
+\\*
+{\bfseries S\-E\-P}, 
+{\bfseries O\-C\-T}, 
+{\bfseries N\-O\-V}, 
+{\bfseries D\-E\-C}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file defining the various packets used to transmit data across the T\-C\-P socket connection. C\-S\-C552 Dr. Spiegel Spring 2020. \begin{DoxyAuthor}{Author}
+Griffin Nye 
+\end{DoxyAuthor}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{msgPackets_8cpp_a171e904112e7e608e8d56280dfd2ad6d}{\index{msg\-Packets.\-cpp@{msg\-Packets.\-cpp}!C\-U\-R\-R\-E\-N\-T\-Y\-E\-A\-R@{C\-U\-R\-R\-E\-N\-T\-Y\-E\-A\-R}}
+\index{C\-U\-R\-R\-E\-N\-T\-Y\-E\-A\-R@{C\-U\-R\-R\-E\-N\-T\-Y\-E\-A\-R}!msgPackets.cpp@{msg\-Packets.\-cpp}}
+\subsubsection[{C\-U\-R\-R\-E\-N\-T\-Y\-E\-A\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-U\-R\-R\-E\-N\-T\-Y\-E\-A\-R~21}}\label{msgPackets_8cpp_a171e904112e7e608e8d56280dfd2ad6d}
+The current year, for validating new record entries \hypertarget{msgPackets_8cpp_a66ac50a388642c37f3908540f06ff1bf}{\index{msg\-Packets.\-cpp@{msg\-Packets.\-cpp}!M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E@{M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}}
+\index{M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E@{M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}!msgPackets.cpp@{msg\-Packets.\-cpp}}
+\subsubsection[{M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E~64}}\label{msgPackets_8cpp_a66ac50a388642c37f3908540f06ff1bf}
+Maximum size of a log record on the server. \hypertarget{msgPackets_8cpp_a0502d3369266e0f83c86f96afcd718b9}{\index{msg\-Packets.\-cpp@{msg\-Packets.\-cpp}!M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E@{M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}}
+\index{M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E@{M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}!msgPackets.cpp@{msg\-Packets.\-cpp}}
+\subsubsection[{M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E~27}}\label{msgPackets_8cpp_a0502d3369266e0f83c86f96afcd718b9}
+Maximum size of a record on the server. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{msgPackets_8cpp_a55861a7e9de0d3e935c8e767408122bd}{\index{msg\-Packets.\-cpp@{msg\-Packets.\-cpp}!M\-O\-N\-T\-H@{M\-O\-N\-T\-H}}
+\index{M\-O\-N\-T\-H@{M\-O\-N\-T\-H}!msgPackets.cpp@{msg\-Packets.\-cpp}}
+\subsubsection[{M\-O\-N\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf M\-O\-N\-T\-H}}}\label{msgPackets_8cpp_a55861a7e9de0d3e935c8e767408122bd}
+An enumerated type for all of the months in a year 

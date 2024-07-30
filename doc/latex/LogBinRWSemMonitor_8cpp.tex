@@ -1,0 +1,21 @@
+\hypertarget{LogBinRWSemMonitor_8cpp}{\section{Log\-Bin\-R\-W\-Sem\-Monitor.\-cpp File Reference}
+\label{LogBinRWSemMonitor_8cpp}\index{Log\-Bin\-R\-W\-Sem\-Monitor.\-cpp@{Log\-Bin\-R\-W\-Sem\-Monitor.\-cpp}}
+}
+
+
+Implementation of a Monitors for the Readers-\/\-Writers problem using semaphores Uses strong writers preference while allowing concurrent reader access for the bin file and weak readers preference while allowing concurrent reader access for the log file.  
+
+
+{\ttfamily \#include \char`\"{}Semaphore\-Set.\-cpp\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor}
+\begin{DoxyCompactList}\small\item\em Monitor for managing Readers and Writers to the bin and log files using semaphores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of a Monitors for the Readers-\/\-Writers problem using semaphores Uses strong writers preference while allowing concurrent reader access for the bin file and weak readers preference while allowing concurrent reader access for the log file. \begin{DoxyAuthor}{Author}
+Griffin Nye 
+\end{DoxyAuthor}

@@ -1,0 +1,213 @@
+\hypertarget{classDataRecord}{\section{Data\-Record Class Reference}
+\label{classDataRecord}\index{Data\-Record@{Data\-Record}}
+}
+
+
+Class for holding a single record of Data.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDataRecord_ad93a5bf8b22613e9723e98251dad7912}{\hyperlink{classDataRecord_ad93a5bf8b22613e9723e98251dad7912}{Data\-Record} ()}\label{classDataRecord_ad93a5bf8b22613e9723e98251dad7912}
+
+\begin{DoxyCompactList}\small\item\em Default Constructor for the \hyperlink{classDataRecord}{Data\-Record} object. \end{DoxyCompactList}\item 
+\hyperlink{classDataRecord_a8e7efc362d0c64ca189f9ac2abd56e8e}{Data\-Record} (string month\-Year, float accessories, float hardware, float software, float total, int rec\-Idx=-\/1)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classDataRecord}{Data\-Record} object using data field values. \end{DoxyCompactList}\item 
+\hyperlink{classDataRecord_ae0b2d3655024922143f35a022d9d965b}{Data\-Record} (string record, int rec\-Idx=-\/1)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classDataRecord}{Data\-Record} object given a record string read from the bin file, by parsing it into the object's data members. \end{DoxyCompactList}\item 
+string \hyperlink{classDataRecord_a2f5721666868ded376f3edff99cfb1b9}{field\-To\-String} (float field)
+\begin{DoxyCompactList}\small\item\em Converts fields of type float to their fixed precision string types. \end{DoxyCompactList}\item 
+int \hyperlink{classDataRecord_a0f679d9af4ac1a0f1ad0017c08b88278}{get\-Record\-Index} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the idx data member. \end{DoxyCompactList}\item 
+\hypertarget{classDataRecord_a601e4f559dfece4c61d2982bc01165b4}{void \hyperlink{classDataRecord_a601e4f559dfece4c61d2982bc01165b4}{print\-Record} ()}\label{classDataRecord_a601e4f559dfece4c61d2982bc01165b4}
+
+\begin{DoxyCompactList}\small\item\em Prints the \hyperlink{classDataRecord}{Data\-Record} object in a well-\/formatted manner. \end{DoxyCompactList}\item 
+void \hyperlink{classDataRecord_a17dd98967502f3fdbfd8d611e50b8cf1}{set\-Accessories} (float val)
+\begin{DoxyCompactList}\small\item\em Sets the accessories data member to the provided value. \end{DoxyCompactList}\item 
+void \hyperlink{classDataRecord_a11be3829611599f63d8cdc1b78f2e075}{set\-Hardware} (float val)
+\begin{DoxyCompactList}\small\item\em Sets the hardware data member to the provided value. \end{DoxyCompactList}\item 
+void \hyperlink{classDataRecord_a0bca4a4d9088733e0d83cc6f602a400a}{set\-Software} (float val)
+\begin{DoxyCompactList}\small\item\em Sets the Software data member to the provided value. \end{DoxyCompactList}\item 
+void \hyperlink{classDataRecord_a59a60fd621917ea907a8020d929d75ea}{set\-Total} (float val)
+\begin{DoxyCompactList}\small\item\em Sets the total data member to the provided value. \end{DoxyCompactList}\item 
+string \hyperlink{classDataRecord_a0c7343d8583d1c3c5582e683ff54daed}{to\-String} ()
+\begin{DoxyCompactList}\small\item\em Converts the \hyperlink{classDataRecord}{Data\-Record} object to a string. \end{DoxyCompactList}\item 
+\hypertarget{classDataRecord_ae5aece25155248b9cfb6750f84c4249f}{void \hyperlink{classDataRecord_ae5aece25155248b9cfb6750f84c4249f}{update\-Total} ()}\label{classDataRecord_ae5aece25155248b9cfb6750f84c4249f}
+
+\begin{DoxyCompactList}\small\item\em Updates the total field by summing the hardware, software, and accessories fields. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for holding a single record of Data. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDataRecord_a8e7efc362d0c64ca189f9ac2abd56e8e}{\index{Data\-Record@{Data\-Record}!Data\-Record@{Data\-Record}}
+\index{Data\-Record@{Data\-Record}!DataRecord@{Data\-Record}}
+\subsubsection[{Data\-Record}]{\setlength{\rightskip}{0pt plus 5cm}Data\-Record\-::\-Data\-Record (
+\begin{DoxyParamCaption}
+\item[{string}]{month\-Year, }
+\item[{float}]{accessories, }
+\item[{float}]{hardware, }
+\item[{float}]{software, }
+\item[{float}]{total, }
+\item[{int}]{rec\-Idx = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a8e7efc362d0c64ca189f9ac2abd56e8e}
+
+
+Constructs a \hyperlink{classDataRecord}{Data\-Record} object using data field values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em month\-Year} & The month and year of captured revenue \\
+\hline
+{\em accessories} & The generated revenue from accessories \\
+\hline
+{\em hardware} & The generated revenue from hardware \\
+\hline
+{\em software} & The generated revenue from software \\
+\hline
+{\em total} & The total generated revenue \\
+\hline
+{\em rec\-Idx} & The index of the record, -\/1 by default \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDataRecord_ae0b2d3655024922143f35a022d9d965b}{\index{Data\-Record@{Data\-Record}!Data\-Record@{Data\-Record}}
+\index{Data\-Record@{Data\-Record}!DataRecord@{Data\-Record}}
+\subsubsection[{Data\-Record}]{\setlength{\rightskip}{0pt plus 5cm}Data\-Record\-::\-Data\-Record (
+\begin{DoxyParamCaption}
+\item[{string}]{record, }
+\item[{int}]{rec\-Idx = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_ae0b2d3655024922143f35a022d9d965b}
+
+
+Constructs a \hyperlink{classDataRecord}{Data\-Record} object given a record string read from the bin file, by parsing it into the object's data members. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & Record string read from the file. \\
+\hline
+{\em rec\-Idx} & Index of the \hyperlink{classDataRecord}{Data\-Record} in the server bin file \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classDataRecord_a2f5721666868ded376f3edff99cfb1b9}{\index{Data\-Record@{Data\-Record}!field\-To\-String@{field\-To\-String}}
+\index{field\-To\-String@{field\-To\-String}!DataRecord@{Data\-Record}}
+\subsubsection[{field\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}string Data\-Record\-::field\-To\-String (
+\begin{DoxyParamCaption}
+\item[{float}]{field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a2f5721666868ded376f3edff99cfb1b9}
+
+
+Converts fields of type float to their fixed precision string types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Float Data field \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A fixed precision float-\/converted string. 
+\end{DoxyReturn}
+\hypertarget{classDataRecord_a0f679d9af4ac1a0f1ad0017c08b88278}{\index{Data\-Record@{Data\-Record}!get\-Record\-Index@{get\-Record\-Index}}
+\index{get\-Record\-Index@{get\-Record\-Index}!DataRecord@{Data\-Record}}
+\subsubsection[{get\-Record\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Data\-Record\-::get\-Record\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a0f679d9af4ac1a0f1ad0017c08b88278}
+
+
+Retrieves the idx data member. 
+
+\begin{DoxyReturn}{Returns}
+The value of the idx member 
+\end{DoxyReturn}
+\hypertarget{classDataRecord_a17dd98967502f3fdbfd8d611e50b8cf1}{\index{Data\-Record@{Data\-Record}!set\-Accessories@{set\-Accessories}}
+\index{set\-Accessories@{set\-Accessories}!DataRecord@{Data\-Record}}
+\subsubsection[{set\-Accessories}]{\setlength{\rightskip}{0pt plus 5cm}void Data\-Record\-::set\-Accessories (
+\begin{DoxyParamCaption}
+\item[{float}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a17dd98967502f3fdbfd8d611e50b8cf1}
+
+
+Sets the accessories data member to the provided value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Value to set data member to \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDataRecord_a11be3829611599f63d8cdc1b78f2e075}{\index{Data\-Record@{Data\-Record}!set\-Hardware@{set\-Hardware}}
+\index{set\-Hardware@{set\-Hardware}!DataRecord@{Data\-Record}}
+\subsubsection[{set\-Hardware}]{\setlength{\rightskip}{0pt plus 5cm}void Data\-Record\-::set\-Hardware (
+\begin{DoxyParamCaption}
+\item[{float}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a11be3829611599f63d8cdc1b78f2e075}
+
+
+Sets the hardware data member to the provided value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Value to set data member to \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDataRecord_a0bca4a4d9088733e0d83cc6f602a400a}{\index{Data\-Record@{Data\-Record}!set\-Software@{set\-Software}}
+\index{set\-Software@{set\-Software}!DataRecord@{Data\-Record}}
+\subsubsection[{set\-Software}]{\setlength{\rightskip}{0pt plus 5cm}void Data\-Record\-::set\-Software (
+\begin{DoxyParamCaption}
+\item[{float}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a0bca4a4d9088733e0d83cc6f602a400a}
+
+
+Sets the Software data member to the provided value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Value to set data member to \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDataRecord_a59a60fd621917ea907a8020d929d75ea}{\index{Data\-Record@{Data\-Record}!set\-Total@{set\-Total}}
+\index{set\-Total@{set\-Total}!DataRecord@{Data\-Record}}
+\subsubsection[{set\-Total}]{\setlength{\rightskip}{0pt plus 5cm}void Data\-Record\-::set\-Total (
+\begin{DoxyParamCaption}
+\item[{float}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a59a60fd621917ea907a8020d929d75ea}
+
+
+Sets the total data member to the provided value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Value to set data member to \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDataRecord_a0c7343d8583d1c3c5582e683ff54daed}{\index{Data\-Record@{Data\-Record}!to\-String@{to\-String}}
+\index{to\-String@{to\-String}!DataRecord@{Data\-Record}}
+\subsubsection[{to\-String}]{\setlength{\rightskip}{0pt plus 5cm}string Data\-Record\-::to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDataRecord_a0c7343d8583d1c3c5582e683ff54daed}
+
+
+Converts the \hyperlink{classDataRecord}{Data\-Record} object to a string. 
+
+\begin{DoxyReturn}{Returns}
+The string representation of the \hyperlink{classDataRecord}{Data\-Record} object 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{DataRecord_8cpp}{Data\-Record.\-cpp}\end{DoxyCompactItemize}

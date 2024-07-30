@@ -1,0 +1,42 @@
+\hypertarget{structSharedMemoryManager_1_1sharedMemBlock}{\section{Shared\-Memory\-Manager\-:\-:shared\-Mem\-Block Struct Reference}
+\label{structSharedMemoryManager_1_1sharedMemBlock}\index{Shared\-Memory\-Manager\-::shared\-Mem\-Block@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}}
+}
+
+
+Container struct of all fields in a client process' shared memory block.  
+
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+pid\-\_\-t \hyperlink{structSharedMemoryManager_1_1sharedMemBlock_af10ab35d9c14b164824710adeb4bb2ef}{pid}
+\item 
+system\-\_\-clock\-::time\-\_\-point \hyperlink{structSharedMemoryManager_1_1sharedMemBlock_a91e99382dfd3baa0a9e9864f0c9964e1}{start\-Time}
+\item 
+int \hyperlink{structSharedMemoryManager_1_1sharedMemBlock_aa3562377afe5f7cb1294887bd328437f}{num\-Commands}
+\item 
+system\-\_\-clock\-::time\-\_\-point \hyperlink{structSharedMemoryManager_1_1sharedMemBlock_a83d99997177411ee92117b99b1924ddf}{last\-Msg\-Time}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container struct of all fields in a client process' shared memory block. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structSharedMemoryManager_1_1sharedMemBlock_a83d99997177411ee92117b99b1924ddf}{\index{Shared\-Memory\-Manager\-::shared\-Mem\-Block@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}!last\-Msg\-Time@{last\-Msg\-Time}}
+\index{last\-Msg\-Time@{last\-Msg\-Time}!SharedMemoryManager::sharedMemBlock@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}}
+\subsubsection[{last\-Msg\-Time}]{\setlength{\rightskip}{0pt plus 5cm}Shared\-Memory\-Manager\-::shared\-Mem\-Block\-::last\-Msg\-Time}}\label{structSharedMemoryManager_1_1sharedMemBlock_a83d99997177411ee92117b99b1924ddf}
+The current system time when the client process last issued a command. \hypertarget{structSharedMemoryManager_1_1sharedMemBlock_aa3562377afe5f7cb1294887bd328437f}{\index{Shared\-Memory\-Manager\-::shared\-Mem\-Block@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}!num\-Commands@{num\-Commands}}
+\index{num\-Commands@{num\-Commands}!SharedMemoryManager::sharedMemBlock@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}}
+\subsubsection[{num\-Commands}]{\setlength{\rightskip}{0pt plus 5cm}Shared\-Memory\-Manager\-::shared\-Mem\-Block\-::num\-Commands}}\label{structSharedMemoryManager_1_1sharedMemBlock_aa3562377afe5f7cb1294887bd328437f}
+The number of commands this client process has issued to the server. \hypertarget{structSharedMemoryManager_1_1sharedMemBlock_af10ab35d9c14b164824710adeb4bb2ef}{\index{Shared\-Memory\-Manager\-::shared\-Mem\-Block@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}!pid@{pid}}
+\index{pid@{pid}!SharedMemoryManager::sharedMemBlock@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}}
+\subsubsection[{pid}]{\setlength{\rightskip}{0pt plus 5cm}Shared\-Memory\-Manager\-::shared\-Mem\-Block\-::pid}}\label{structSharedMemoryManager_1_1sharedMemBlock_af10ab35d9c14b164824710adeb4bb2ef}
+The pid of the client process using this block of shared memory. \hypertarget{structSharedMemoryManager_1_1sharedMemBlock_a91e99382dfd3baa0a9e9864f0c9964e1}{\index{Shared\-Memory\-Manager\-::shared\-Mem\-Block@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}!start\-Time@{start\-Time}}
+\index{start\-Time@{start\-Time}!SharedMemoryManager::sharedMemBlock@{Shared\-Memory\-Manager\-::shared\-Mem\-Block}}
+\subsubsection[{start\-Time}]{\setlength{\rightskip}{0pt plus 5cm}Shared\-Memory\-Manager\-::shared\-Mem\-Block\-::start\-Time}}\label{structSharedMemoryManager_1_1sharedMemBlock_a91e99382dfd3baa0a9e9864f0c9964e1}
+The current system time at the time of the client process' execution. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SharedMemoryManager_8cpp}{Shared\-Memory\-Manager.\-cpp}\end{DoxyCompactItemize}

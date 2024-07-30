@@ -1,0 +1,66 @@
+\hypertarget{structlogMsgPacket}{\section{log\-Msg\-Packet Struct Reference}
+\label{structlogMsgPacket}\index{log\-Msg\-Packet@{log\-Msg\-Packet}}
+}
+
+
+Sub-\/\-Struct T\-C\-P message packet for transmitting log records.  
+
+
+Inheritance diagram for log\-Msg\-Packet\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structlogMsgPacket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structlogMsgPacket_ac6231231cfcd4000902c5bdb3165432c}{\hyperlink{structlogMsgPacket_ac6231231cfcd4000902c5bdb3165432c}{log\-Msg\-Packet} ()}\label{structlogMsgPacket_ac6231231cfcd4000902c5bdb3165432c}
+
+\begin{DoxyCompactList}\small\item\em Default constructor for \hyperlink{structlogMsgPacket}{log\-Msg\-Packet}. \end{DoxyCompactList}\item 
+\hyperlink{structlogMsgPacket_ab56f75cef643f8d69b59a007b3e61fa4}{log\-Msg\-Packet} (pid\-\_\-t \hyperlink{structmsgPacket_a294c1f456116eb9177b31ab8b5577f86}{sender}, const char \hyperlink{structmsgPacket_a8b49c124b4ca2ed872692333b71d74fd}{cmd}\mbox{[}$\,$\mbox{]}, char \hyperlink{structlogMsgPacket_a3080c749154c1b7e0f885d5a0bc5859b}{log\-Record}\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{structintMsgPacket}{int\-Msg\-Packet} given its elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structlogMsgPacket_a3080c749154c1b7e0f885d5a0bc5859b}{log\-Record} \mbox{[}\hyperlink{msgPackets_8cpp_a66ac50a388642c37f3908540f06ff1bf}{M\-A\-X\-L\-O\-G\-R\-E\-C\-O\-R\-D\-S\-I\-Z\-E}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sub-\/\-Struct T\-C\-P message packet for transmitting log records. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structlogMsgPacket_ab56f75cef643f8d69b59a007b3e61fa4}{\index{log\-Msg\-Packet@{log\-Msg\-Packet}!log\-Msg\-Packet@{log\-Msg\-Packet}}
+\index{log\-Msg\-Packet@{log\-Msg\-Packet}!logMsgPacket@{log\-Msg\-Packet}}
+\subsubsection[{log\-Msg\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}log\-Msg\-Packet\-::log\-Msg\-Packet (
+\begin{DoxyParamCaption}
+\item[{pid\-\_\-t}]{sender, }
+\item[{const char}]{cmd\mbox{[}$\,$\mbox{]}, }
+\item[{char}]{log\-Record\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structlogMsgPacket_ab56f75cef643f8d69b59a007b3e61fa4}
+
+
+Constructs a \hyperlink{structintMsgPacket}{int\-Msg\-Packet} given its elements. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The sender of the message's P\-I\-D. \\
+\hline
+{\em cmd} & The command for the message. \\
+\hline
+{\em log\-Record} & The log record to be transmitted. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structlogMsgPacket_a3080c749154c1b7e0f885d5a0bc5859b}{\index{log\-Msg\-Packet@{log\-Msg\-Packet}!log\-Record@{log\-Record}}
+\index{log\-Record@{log\-Record}!logMsgPacket@{log\-Msg\-Packet}}
+\subsubsection[{log\-Record}]{\setlength{\rightskip}{0pt plus 5cm}log\-Msg\-Packet\-::log\-Record}}\label{structlogMsgPacket_a3080c749154c1b7e0f885d5a0bc5859b}
+The container for the log record string 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{msgPackets_8cpp}{msg\-Packets.\-cpp}\end{DoxyCompactItemize}

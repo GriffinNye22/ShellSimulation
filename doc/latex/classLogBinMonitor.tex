@@ -1,0 +1,60 @@
+\hypertarget{classLogBinMonitor}{\section{Log\-Bin\-Monitor Class Reference}
+\label{classLogBinMonitor}\index{Log\-Bin\-Monitor@{Log\-Bin\-Monitor}}
+}
+Inheritance diagram for Log\-Bin\-Monitor\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLogBinMonitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLogBinMonitor_a9b9460058da2a7808c218d3af8b6c8d1}{Log\-Bin\-Monitor} (int sem\-Key)
+\begin{DoxyCompactList}\small\item\em Default constructor for the \hyperlink{classLogBinMonitor}{Log\-Bin\-Monitor} object. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_a61f93501a153e0eb633c730ed4560aaf}{void \hyperlink{classLogBinMonitor_a61f93501a153e0eb633c730ed4560aaf}{init} ()}\label{classLogBinMonitor_a61f93501a153e0eb633c730ed4560aaf}
+
+\begin{DoxyCompactList}\small\item\em Initializes all semaphores in sem\-Set to their default values. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_ac8c0b581fdcc19a919c53e53415fc667}{void \hyperlink{classLogBinMonitor_ac8c0b581fdcc19a919c53e53415fc667}{add\-Bin\-Reader} ()}\label{classLogBinMonitor_ac8c0b581fdcc19a919c53e53415fc667}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a bin Reader and prepare it for reading from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_a5da1b371c5fc318b75a73f54c2e3f426}{void \hyperlink{classLogBinMonitor_a5da1b371c5fc318b75a73f54c2e3f426}{rem\-Bin\-Reader} ()}\label{classLogBinMonitor_a5da1b371c5fc318b75a73f54c2e3f426}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Reader after it reads from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_a3d72129f0b07e510bf406578b0e1cd11}{void \hyperlink{classLogBinMonitor_a3d72129f0b07e510bf406578b0e1cd11}{add\-Bin\-Writer} ()}\label{classLogBinMonitor_a3d72129f0b07e510bf406578b0e1cd11}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a Writer and prepare it for writing to a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_adbebb020c59d17fa310390cecc033524}{void \hyperlink{classLogBinMonitor_adbebb020c59d17fa310390cecc033524}{rem\-Bin\-Writer} ()}\label{classLogBinMonitor_adbebb020c59d17fa310390cecc033524}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Writer after it writes to a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_ae40acf389c5d12353ea4f1ef1b45ce1d}{void \hyperlink{classLogBinMonitor_ae40acf389c5d12353ea4f1ef1b45ce1d}{add\-Log\-Reader} ()}\label{classLogBinMonitor_ae40acf389c5d12353ea4f1ef1b45ce1d}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a Reader and prepare it for reading from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_a1b15b0cd63d7e23eec33667f793b4e78}{void \hyperlink{classLogBinMonitor_a1b15b0cd63d7e23eec33667f793b4e78}{rem\-Log\-Reader} ()}\label{classLogBinMonitor_a1b15b0cd63d7e23eec33667f793b4e78}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Reader after it reads from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_a709ca4fcc550b7f1c2679b06190bf3eb}{void \hyperlink{classLogBinMonitor_a709ca4fcc550b7f1c2679b06190bf3eb}{add\-Log\-Writer} ()}\label{classLogBinMonitor_a709ca4fcc550b7f1c2679b06190bf3eb}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a Writer and prepare it for writing to a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinMonitor_acd86c2c38d05a21225e64184eaf3e6dc}{void \hyperlink{classLogBinMonitor_acd86c2c38d05a21225e64184eaf3e6dc}{rem\-Log\-Writer} ()}\label{classLogBinMonitor_acd86c2c38d05a21225e64184eaf3e6dc}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Writer after it writes to a critical section. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLogBinMonitor_a9b9460058da2a7808c218d3af8b6c8d1}{\index{Log\-Bin\-Monitor@{Log\-Bin\-Monitor}!Log\-Bin\-Monitor@{Log\-Bin\-Monitor}}
+\index{Log\-Bin\-Monitor@{Log\-Bin\-Monitor}!LogBinMonitor@{Log\-Bin\-Monitor}}
+\subsubsection[{Log\-Bin\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}Log\-Bin\-Monitor\-::\-Log\-Bin\-Monitor (
+\begin{DoxyParamCaption}
+\item[{int}]{sem\-Key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogBinMonitor_a9b9460058da2a7808c218d3af8b6c8d1}
+
+
+Default constructor for the \hyperlink{classLogBinMonitor}{Log\-Bin\-Monitor} object. 
+
+Constructs the \hyperlink{classLogBinMonitor}{Log\-Bin\-Monitor} object. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Strong\-Writer\-R\-W\-Sem\-Monitor.\-cpp\end{DoxyCompactItemize}

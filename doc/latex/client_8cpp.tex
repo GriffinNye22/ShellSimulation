@@ -1,0 +1,393 @@
+\hypertarget{client_8cpp}{\section{client.\-cpp File Reference}
+\label{client_8cpp}\index{client.\-cpp@{client.\-cpp}}
+}
+
+
+Client side of the T\-C\-P Distributed Information System implementation C\-S\-C552 Dr. Spiegel Spring 2020.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$netdb.\-h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$sys/socket.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}Data\-Record.\-cpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}msg\-Packets.\-cpp\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{client_8cpp_a72efaf06056cf96435d100c4e0c0b10a}{change\-Record} (int sockfd, pid\-\_\-t my\-P\-I\-D)
+\begin{DoxyCompactList}\small\item\em Handles client-\/server and user-\/client interaction for the Change Record menu option. \end{DoxyCompactList}\item 
+int \hyperlink{client_8cpp_abd75338c1858a15572c03bf9ec14c926}{connect} (int S\-E\-R\-V\-E\-R\-\_\-\-P\-O\-R\-T, struct in\-\_\-addr $\ast$S\-E\-R\-V\-E\-R\-\_\-\-A\-D\-D\-R\-E\-S\-S)
+\begin{DoxyCompactList}\small\item\em Attempts to connect to the server. Returns socket file descriptor on successful connection. \end{DoxyCompactList}\item 
+\hypertarget{client_8cpp_acf1494aaf51500b57c44b9e68b652b8a}{void \hyperlink{client_8cpp_acf1494aaf51500b57c44b9e68b652b8a}{display\-Field\-Menu} ()}\label{client_8cpp_acf1494aaf51500b57c44b9e68b652b8a}
+
+\begin{DoxyCompactList}\small\item\em Displays the menu of editable field options to the user. \end{DoxyCompactList}\item 
+\hypertarget{client_8cpp_a59c2926dd9b0968badf463aaf4f91422}{void \hyperlink{client_8cpp_a59c2926dd9b0968badf463aaf4f91422}{display\-Menu} ()}\label{client_8cpp_a59c2926dd9b0968badf463aaf4f91422}
+
+\begin{DoxyCompactList}\small\item\em Displays the Main Menu to the user. \end{DoxyCompactList}\item 
+\hyperlink{classDataRecord}{Data\-Record} \hyperlink{client_8cpp_aa22e1b410c58a57567eb507a6e74b809}{display\-Record} (int sockfd, pid\-\_\-t my\-P\-I\-D, bool selected\-Menu\-Option)
+\begin{DoxyCompactList}\small\item\em Handles client-\/server and user-\/client interaction for the Display Record menu option. \end{DoxyCompactList}\item 
+int \hyperlink{client_8cpp_ae0d8ef995548e0f8b1a6ef542c395664}{get\-Count} (int sockfd, pid\-\_\-t my\-P\-I\-D)
+\begin{DoxyCompactList}\small\item\em Handles interaction with server for retrieving the record count. \end{DoxyCompactList}\item 
+char \hyperlink{client_8cpp_aa46346f48e3b5f40cd4f8be7c653549f}{get\-Menu\-Input} (bool main\-Menu)
+\begin{DoxyCompactList}\small\item\em Retrieves the user's menu selection, prompting again for invalid entries. \end{DoxyCompactList}\item 
+void \hyperlink{client_8cpp_a250a004e35b04fb1956b9d8cbccf8846}{new\-Record} (int sockfd, pid\-\_\-t my\-P\-I\-D)
+\begin{DoxyCompactList}\small\item\em Handles client-\/server and user-\/client interaction for the New Record menu option. \end{DoxyCompactList}\item 
+\hypertarget{client_8cpp_a4bfd094c510aa86a46d596db71f9f43d}{void \hyperlink{client_8cpp_a4bfd094c510aa86a46d596db71f9f43d}{print\-Data\-Labels} ()}\label{client_8cpp_a4bfd094c510aa86a46d596db71f9f43d}
+
+\begin{DoxyCompactList}\small\item\em Prints the data labels for output records. \end{DoxyCompactList}\item 
+void \hyperlink{client_8cpp_a9adbdb5939cfbdc54e6b37a90203695a}{print\-Log\-Records} (int sockfd, pid\-\_\-t my\-P\-I\-D, int num\-Records)
+\begin{DoxyCompactList}\small\item\em Receives and prints all log records sent by the server. \end{DoxyCompactList}\item 
+void \hyperlink{client_8cpp_aff14b7970a9fa9f065e2793772f82a93}{print\-Record} (char record\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Prints the provided record. \end{DoxyCompactList}\item 
+float \hyperlink{client_8cpp_a66c0b2a52c5e5660374791878ef03967}{prompt\-Float\-Field} (char field)
+\begin{DoxyCompactList}\small\item\em Prompts the user for one of the float fields for a new or updated record. \end{DoxyCompactList}\item 
+string \hyperlink{client_8cpp_a37056f14cc3fbb1ef8b70896b6443e1d}{prompt\-Month} ()
+\begin{DoxyCompactList}\small\item\em Prompts the user for the month for a new record. Validates input through recursive calls until valid input is given. \end{DoxyCompactList}\item 
+\hyperlink{classDataRecord}{Data\-Record} \hyperlink{client_8cpp_a6ec627d475672aff6d9dbd3e078ab318}{prompt\-New\-Record} ()
+\begin{DoxyCompactList}\small\item\em Prompts the user to create a new record. \end{DoxyCompactList}\item 
+int \hyperlink{client_8cpp_a71314c4b236c0c0323851b154996745d}{prompt\-Sel\-Record} (int num\-Records, bool all\-Records)
+\begin{DoxyCompactList}\small\item\em Prompts the user for a record index between 1 and the provided max index. Validates input through recursive calls until valid input is given. \end{DoxyCompactList}\item 
+string \hyperlink{client_8cpp_aa34b5cce22d58fd391cacd2166f11dfc}{prompt\-Year} ()
+\begin{DoxyCompactList}\small\item\em Prompts the user for the year for a new record. Validates input through recursive calls until valid input is given. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Msg\-Packet $>$ }\\void \hyperlink{client_8cpp_af18ad863f3d64cfe8174182f9eda48ae}{receive\-Msg} (int sockfd, Msg\-Packet \&msg)
+\begin{DoxyCompactList}\small\item\em Handles the receipt of messages from the server. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Msg\-Packet $>$ }\\void \hyperlink{client_8cpp_adea406d21c20cfc4ae351f7454cc9e46}{send\-Msg} (int sockfd, Msg\-Packet msg)
+\begin{DoxyCompactList}\small\item\em Handles the transmission of messages to the server. \end{DoxyCompactList}\item 
+void \hyperlink{client_8cpp_a737f1e9c9e5a3b45d788b8361297175f}{show\-Server\-Log} (int sockfd, pid\-\_\-t my\-P\-I\-D)
+\begin{DoxyCompactList}\small\item\em Handles client-\/server and user-\/client interaction for the Show Server Log menu option. \end{DoxyCompactList}\item 
+int \hyperlink{client_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Calls the appropriate methods to ensure proper functionality of the client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Client side of the T\-C\-P Distributed Information System implementation C\-S\-C552 Dr. Spiegel Spring 2020. \begin{DoxyAuthor}{Author}
+Griffin Nye 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{client_8cpp_a72efaf06056cf96435d100c4e0c0b10a}{\index{client.\-cpp@{client.\-cpp}!change\-Record@{change\-Record}}
+\index{change\-Record@{change\-Record}!client.cpp@{client.\-cpp}}
+\subsubsection[{change\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void change\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{pid\-\_\-t}]{my\-P\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a72efaf06056cf96435d100c4e0c0b10a}
+
+
+Handles client-\/server and user-\/client interaction for the Change Record menu option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected sockets file descriptor. \\
+\hline
+{\em my\-P\-I\-D} & This client's P\-I\-D. \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8cpp_abd75338c1858a15572c03bf9ec14c926}{\index{client.\-cpp@{client.\-cpp}!connect@{connect}}
+\index{connect@{connect}!client.cpp@{client.\-cpp}}
+\subsubsection[{connect}]{\setlength{\rightskip}{0pt plus 5cm}int connect (
+\begin{DoxyParamCaption}
+\item[{int}]{S\-E\-R\-V\-E\-R\-\_\-\-P\-O\-R\-T, }
+\item[{struct in\-\_\-addr $\ast$}]{S\-E\-R\-V\-E\-R\-\_\-\-A\-D\-D\-R\-E\-S\-S}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_abd75338c1858a15572c03bf9ec14c926}
+
+
+Attempts to connect to the server. Returns socket file descriptor on successful connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\-E\-R\-V\-E\-R\-\_\-\-P\-O\-R\-T} & The server's dedicated port number. \\
+\hline
+{\em S\-E\-R\-V\-E\-R\-\_\-\-A\-D\-D\-R\-E\-S\-S} & The server's address (stored as in\-\_\-addr). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Socket file descriptor on successful connection; client exits on failed connection. 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_aa22e1b410c58a57567eb507a6e74b809}{\index{client.\-cpp@{client.\-cpp}!display\-Record@{display\-Record}}
+\index{display\-Record@{display\-Record}!client.cpp@{client.\-cpp}}
+\subsubsection[{display\-Record}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Record} display\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{pid\-\_\-t}]{my\-P\-I\-D, }
+\item[{bool}]{selected\-Menu\-Option}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_aa22e1b410c58a57567eb507a6e74b809}
+
+
+Handles client-\/server and user-\/client interaction for the Display Record menu option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected socket's file descriptor. \\
+\hline
+{\em my\-P\-I\-D} & This client's P\-I\-D. \\
+\hline
+{\em selected\-Menu\-Option} & Whether or not Display Record is the currently selected menu option (false removes -\/999 option). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The retrieved record as an instance of \hyperlink{classDataRecord}{Data\-Record}. (Last record retrieved for all records option (-\/999), however the return value is not used in this case). 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_ae0d8ef995548e0f8b1a6ef542c395664}{\index{client.\-cpp@{client.\-cpp}!get\-Count@{get\-Count}}
+\index{get\-Count@{get\-Count}!client.cpp@{client.\-cpp}}
+\subsubsection[{get\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Count (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{pid\-\_\-t}]{my\-P\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_ae0d8ef995548e0f8b1a6ef542c395664}
+
+
+Handles interaction with server for retrieving the record count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected socket's file descriptor. \\
+\hline
+{\em my\-P\-I\-D} & This client's P\-I\-D. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of records stored by the server. 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_aa46346f48e3b5f40cd4f8be7c653549f}{\index{client.\-cpp@{client.\-cpp}!get\-Menu\-Input@{get\-Menu\-Input}}
+\index{get\-Menu\-Input@{get\-Menu\-Input}!client.cpp@{client.\-cpp}}
+\subsubsection[{get\-Menu\-Input}]{\setlength{\rightskip}{0pt plus 5cm}char get\-Menu\-Input (
+\begin{DoxyParamCaption}
+\item[{bool}]{main\-Menu}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_aa46346f48e3b5f40cd4f8be7c653549f}
+
+
+Retrieves the user's menu selection, prompting again for invalid entries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em main\-Menu} & Whether or not the menu input is for the main menu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The user's valid menu selection as an uppercase character 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{\index{client.\-cpp@{client.\-cpp}!main@{main}}
+\index{main@{main}!client.cpp@{client.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Calls the appropriate methods to ensure proper functionality of the client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of command-\/line arguments \\
+\hline
+{\em argv} & List of command-\/line arguments \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8cpp_a250a004e35b04fb1956b9d8cbccf8846}{\index{client.\-cpp@{client.\-cpp}!new\-Record@{new\-Record}}
+\index{new\-Record@{new\-Record}!client.cpp@{client.\-cpp}}
+\subsubsection[{new\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void new\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{pid\-\_\-t}]{my\-P\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a250a004e35b04fb1956b9d8cbccf8846}
+
+
+Handles client-\/server and user-\/client interaction for the New Record menu option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected socket's file descriptor. \\
+\hline
+{\em my\-P\-I\-D} & This client's P\-I\-D \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8cpp_a9adbdb5939cfbdc54e6b37a90203695a}{\index{client.\-cpp@{client.\-cpp}!print\-Log\-Records@{print\-Log\-Records}}
+\index{print\-Log\-Records@{print\-Log\-Records}!client.cpp@{client.\-cpp}}
+\subsubsection[{print\-Log\-Records}]{\setlength{\rightskip}{0pt plus 5cm}void print\-Log\-Records (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{pid\-\_\-t}]{my\-P\-I\-D, }
+\item[{int}]{num\-Records}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a9adbdb5939cfbdc54e6b37a90203695a}
+
+
+Receives and prints all log records sent by the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected socket's file descriptor. \\
+\hline
+{\em my\-P\-I\-D} & This client's P\-I\-D. \\
+\hline
+{\em num\-Records} & The number of log records to receive from the server. \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8cpp_aff14b7970a9fa9f065e2793772f82a93}{\index{client.\-cpp@{client.\-cpp}!print\-Record@{print\-Record}}
+\index{print\-Record@{print\-Record}!client.cpp@{client.\-cpp}}
+\subsubsection[{print\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void print\-Record (
+\begin{DoxyParamCaption}
+\item[{char}]{record\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_aff14b7970a9fa9f065e2793772f82a93}
+
+
+Prints the provided record. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & The record to be printed \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8cpp_a66c0b2a52c5e5660374791878ef03967}{\index{client.\-cpp@{client.\-cpp}!prompt\-Float\-Field@{prompt\-Float\-Field}}
+\index{prompt\-Float\-Field@{prompt\-Float\-Field}!client.cpp@{client.\-cpp}}
+\subsubsection[{prompt\-Float\-Field}]{\setlength{\rightskip}{0pt plus 5cm}float prompt\-Float\-Field (
+\begin{DoxyParamCaption}
+\item[{char}]{field}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a66c0b2a52c5e5660374791878ef03967}
+
+
+Prompts the user for one of the float fields for a new or updated record. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & A Character representing a field in the \hyperlink{classDataRecord}{Data\-Record} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value assigned to the field 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_a37056f14cc3fbb1ef8b70896b6443e1d}{\index{client.\-cpp@{client.\-cpp}!prompt\-Month@{prompt\-Month}}
+\index{prompt\-Month@{prompt\-Month}!client.cpp@{client.\-cpp}}
+\subsubsection[{prompt\-Month}]{\setlength{\rightskip}{0pt plus 5cm}string prompt\-Month (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a37056f14cc3fbb1ef8b70896b6443e1d}
+
+
+Prompts the user for the month for a new record. Validates input through recursive calls until valid input is given. 
+
+\begin{DoxyReturn}{Returns}
+The month for the new record 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_a6ec627d475672aff6d9dbd3e078ab318}{\index{client.\-cpp@{client.\-cpp}!prompt\-New\-Record@{prompt\-New\-Record}}
+\index{prompt\-New\-Record@{prompt\-New\-Record}!client.cpp@{client.\-cpp}}
+\subsubsection[{prompt\-New\-Record}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Data\-Record} prompt\-New\-Record (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a6ec627d475672aff6d9dbd3e078ab318}
+
+
+Prompts the user to create a new record. 
+
+\begin{DoxyReturn}{Returns}
+The new data record 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_a71314c4b236c0c0323851b154996745d}{\index{client.\-cpp@{client.\-cpp}!prompt\-Sel\-Record@{prompt\-Sel\-Record}}
+\index{prompt\-Sel\-Record@{prompt\-Sel\-Record}!client.cpp@{client.\-cpp}}
+\subsubsection[{prompt\-Sel\-Record}]{\setlength{\rightskip}{0pt plus 5cm}int prompt\-Sel\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-Records, }
+\item[{bool}]{all\-Records}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a71314c4b236c0c0323851b154996745d}
+
+
+Prompts the user for a record index between 1 and the provided max index. Validates input through recursive calls until valid input is given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\-Records} & The maximum index that can be entered by the user. \\
+\hline
+{\em all\-Records} & Whether or not the all records option (-\/999) should be available. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired index specified by the user 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_aa34b5cce22d58fd391cacd2166f11dfc}{\index{client.\-cpp@{client.\-cpp}!prompt\-Year@{prompt\-Year}}
+\index{prompt\-Year@{prompt\-Year}!client.cpp@{client.\-cpp}}
+\subsubsection[{prompt\-Year}]{\setlength{\rightskip}{0pt plus 5cm}string prompt\-Year (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_aa34b5cce22d58fd391cacd2166f11dfc}
+
+
+Prompts the user for the year for a new record. Validates input through recursive calls until valid input is given. 
+
+\begin{DoxyReturn}{Returns}
+The year for the new record 
+\end{DoxyReturn}
+\hypertarget{client_8cpp_af18ad863f3d64cfe8174182f9eda48ae}{\index{client.\-cpp@{client.\-cpp}!receive\-Msg@{receive\-Msg}}
+\index{receive\-Msg@{receive\-Msg}!client.cpp@{client.\-cpp}}
+\subsubsection[{receive\-Msg}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Msg\-Packet $>$ void receive\-Msg (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{Msg\-Packet \&}]{msg}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_af18ad863f3d64cfe8174182f9eda48ae}
+
+
+Handles the receipt of messages from the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected socket's file descriptor. \\
+\hline
+{\em msg} & The expected message packet to be received. \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8cpp_adea406d21c20cfc4ae351f7454cc9e46}{\index{client.\-cpp@{client.\-cpp}!send\-Msg@{send\-Msg}}
+\index{send\-Msg@{send\-Msg}!client.cpp@{client.\-cpp}}
+\subsubsection[{send\-Msg}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Msg\-Packet $>$ void send\-Msg (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{Msg\-Packet}]{msg}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_adea406d21c20cfc4ae351f7454cc9e46}
+
+
+Handles the transmission of messages to the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected socket's file descriptor. \\
+\hline
+{\em msg} & The message packet to be transmitted \\
+\hline
+\end{DoxyParams}
+\hypertarget{client_8cpp_a737f1e9c9e5a3b45d788b8361297175f}{\index{client.\-cpp@{client.\-cpp}!show\-Server\-Log@{show\-Server\-Log}}
+\index{show\-Server\-Log@{show\-Server\-Log}!client.cpp@{client.\-cpp}}
+\subsubsection[{show\-Server\-Log}]{\setlength{\rightskip}{0pt plus 5cm}void show\-Server\-Log (
+\begin{DoxyParamCaption}
+\item[{int}]{sockfd, }
+\item[{pid\-\_\-t}]{my\-P\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{client_8cpp_a737f1e9c9e5a3b45d788b8361297175f}
+
+
+Handles client-\/server and user-\/client interaction for the Show Server Log menu option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The currently connected socket's file descriptor. \\
+\hline
+{\em my\-P\-I\-D} & This client's P\-I\-D. \\
+\hline
+\end{DoxyParams}

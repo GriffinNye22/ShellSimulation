@@ -1,0 +1,267 @@
+\hypertarget{classSemaphoreSet}{\section{Semaphore\-Set Class Reference}
+\label{classSemaphoreSet}\index{Semaphore\-Set@{Semaphore\-Set}}
+}
+
+
+Wrapper Class for U\-N\-I\-X System V Semaphores.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSemaphoreSet_a91bfe49df662dc06f43dfe9149470fae}{\hyperlink{classSemaphoreSet_a91bfe49df662dc06f43dfe9149470fae}{Semaphore\-Set} ()}\label{classSemaphoreSet_a91bfe49df662dc06f43dfe9149470fae}
+
+\begin{DoxyCompactList}\small\item\em Default constructor for the semaphore set. \end{DoxyCompactList}\item 
+\hyperlink{classSemaphoreSet_a11f8c507a74d0d4295f2f9a83943f07a}{Semaphore\-Set} (int key, int num\-Sems, int perm\-Flags)
+\begin{DoxyCompactList}\small\item\em Constructs a semaphore set. \end{DoxyCompactList}\item 
+\hypertarget{classSemaphoreSet_a8746a1881e8b356db387325e12716116}{void \hyperlink{classSemaphoreSet_a8746a1881e8b356db387325e12716116}{close} ()}\label{classSemaphoreSet_a8746a1881e8b356db387325e12716116}
+
+\begin{DoxyCompactList}\small\item\em Destroys the semaphore set. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_a6b1eca22231adc51209113a7e0e1d1e7}{add\-Semaphore} ()
+\begin{DoxyCompactList}\small\item\em Adds a semaphore to the semaphore set. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_a3d6ae6868cfe3c052dfbd13f2913b036}{remove\-Semaphore} ()
+\begin{DoxyCompactList}\small\item\em Removes a semaphore to the semaphore set. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_a835d01b6d87fddf4fcb452f2467153e5}{wait} (unsigned short sem\-Num)
+\begin{DoxyCompactList}\small\item\em Issues a wait operation on the semaphore. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_a81f3eaf327c4ed2547a0962c9be52374}{signal} (unsigned short sem\-Num)
+\begin{DoxyCompactList}\small\item\em Signals a semaphore to wakeup a process. \end{DoxyCompactList}\item 
+unsigned short $\ast$ \hyperlink{classSemaphoreSet_a80a6f8e9c61a85c366ec61d290928d06}{get\-All} ()
+\begin{DoxyCompactList}\small\item\em Retrives the value of all semaphores in the set. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_a80e1e53c0eb29c548c1d24556b0f8f9a}{set\-All} (int val)
+\begin{DoxyCompactList}\small\item\em Sets the value of all semaphores in the set to the specified value. \end{DoxyCompactList}\item 
+unsigned short \hyperlink{classSemaphoreSet_afe106fd82de68de0ba255c351c474580}{get} (unsigned short sem\-Num)
+\begin{DoxyCompactList}\small\item\em Gets the value of a single semaphore in the set. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_a2cc2c35fa5bb513bc31a565d5a719111}{set} (unsigned short sem\-Num, int val)
+\begin{DoxyCompactList}\small\item\em Sets the value of a single semaphore in the set. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_ad57c754f58ff0f870c2fe773768f7b18}{get\-Wait\-Count} (unsigned short sem\-Num)
+\begin{DoxyCompactList}\small\item\em Returns the number of processes waiting for the semaphore to increase its value. \end{DoxyCompactList}\item 
+int \hyperlink{classSemaphoreSet_a01eff4e0d666877dfce9892e0f53de36}{get\-Num\-Sems} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of semaphores in the set. \end{DoxyCompactList}\item 
+void \hyperlink{classSemaphoreSet_af02b517be7efef6c5baebcf75391d757}{print} ()
+\begin{DoxyCompactList}\small\item\em Prints the values of the semaphore set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper Class for U\-N\-I\-X System V Semaphores. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSemaphoreSet_a11f8c507a74d0d4295f2f9a83943f07a}{\index{Semaphore\-Set@{Semaphore\-Set}!Semaphore\-Set@{Semaphore\-Set}}
+\index{Semaphore\-Set@{Semaphore\-Set}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{Semaphore\-Set}]{\setlength{\rightskip}{0pt plus 5cm}Semaphore\-Set\-::\-Semaphore\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{key, }
+\item[{int}]{num\-Sems, }
+\item[{int}]{perm\-Flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a11f8c507a74d0d4295f2f9a83943f07a}
+
+
+Constructs a semaphore set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key for the semaphore set. \\
+\hline
+{\em num\-Sems} & The number of semaphore to create. \\
+\hline
+{\em perm\-Flags} & The permissions flags for the semaphore set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The semaphore set identifier (0 indicates semaphore set already created, negative value means semaphore set does not exist). 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSemaphoreSet_a6b1eca22231adc51209113a7e0e1d1e7}{\index{Semaphore\-Set@{Semaphore\-Set}!add\-Semaphore@{add\-Semaphore}}
+\index{add\-Semaphore@{add\-Semaphore}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{add\-Semaphore}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::add\-Semaphore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a6b1eca22231adc51209113a7e0e1d1e7}
+
+
+Adds a semaphore to the semaphore set. 
+
+\begin{DoxyReturn}{Returns}
+The new semaphore set identifier. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_afe106fd82de68de0ba255c351c474580}{\index{Semaphore\-Set@{Semaphore\-Set}!get@{get}}
+\index{get@{get}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short Semaphore\-Set\-::get (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{sem\-Num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_afe106fd82de68de0ba255c351c474580}
+
+
+Gets the value of a single semaphore in the set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sem\-Num} & The number of the semaphore for which to retrieve its value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the specified semaphore. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_a80a6f8e9c61a85c366ec61d290928d06}{\index{Semaphore\-Set@{Semaphore\-Set}!get\-All@{get\-All}}
+\index{get\-All@{get\-All}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{get\-All}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short$\ast$ Semaphore\-Set\-::get\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a80a6f8e9c61a85c366ec61d290928d06}
+
+
+Retrives the value of all semaphores in the set. 
+
+\begin{DoxyReturn}{Returns}
+The array of semaphore values on success, N\-U\-L\-L on failure. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_a01eff4e0d666877dfce9892e0f53de36}{\index{Semaphore\-Set@{Semaphore\-Set}!get\-Num\-Sems@{get\-Num\-Sems}}
+\index{get\-Num\-Sems@{get\-Num\-Sems}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{get\-Num\-Sems}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::get\-Num\-Sems (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a01eff4e0d666877dfce9892e0f53de36}
+
+
+Gets the number of semaphores in the set. 
+
+\begin{DoxyReturn}{Returns}
+The number of semaphores in the set. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_ad57c754f58ff0f870c2fe773768f7b18}{\index{Semaphore\-Set@{Semaphore\-Set}!get\-Wait\-Count@{get\-Wait\-Count}}
+\index{get\-Wait\-Count@{get\-Wait\-Count}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{get\-Wait\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::get\-Wait\-Count (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{sem\-Num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_ad57c754f58ff0f870c2fe773768f7b18}
+
+
+Returns the number of processes waiting for the semaphore to increase its value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sem\-Num} & The semaphore for which to retrieve the number of waiting processes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of processes waiting for the semaphore to increase its value. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_af02b517be7efef6c5baebcf75391d757}{\index{Semaphore\-Set@{Semaphore\-Set}!print@{print}}
+\index{print@{print}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void Semaphore\-Set\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_af02b517be7efef6c5baebcf75391d757}
+
+
+Prints the values of the semaphore set. 
+
+\begin{DoxyAuthor}{Author}
+Dr. Daniel Spiegel (source\-: shmdemo.\-cpp) Modified by\-: Griffin Nye 
+\end{DoxyAuthor}
+\hypertarget{classSemaphoreSet_a3d6ae6868cfe3c052dfbd13f2913b036}{\index{Semaphore\-Set@{Semaphore\-Set}!remove\-Semaphore@{remove\-Semaphore}}
+\index{remove\-Semaphore@{remove\-Semaphore}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{remove\-Semaphore}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::remove\-Semaphore (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a3d6ae6868cfe3c052dfbd13f2913b036}
+
+
+Removes a semaphore to the semaphore set. 
+
+\begin{DoxyReturn}{Returns}
+The new semaphore set identifier. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_a2cc2c35fa5bb513bc31a565d5a719111}{\index{Semaphore\-Set@{Semaphore\-Set}!set@{set}}
+\index{set@{set}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::set (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{sem\-Num, }
+\item[{int}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a2cc2c35fa5bb513bc31a565d5a719111}
+
+
+Sets the value of a single semaphore in the set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sem\-Num} & The number of the semaphore for which to set its value. \\
+\hline
+{\em val} & The value to set the semaphore to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_a80e1e53c0eb29c548c1d24556b0f8f9a}{\index{Semaphore\-Set@{Semaphore\-Set}!set\-All@{set\-All}}
+\index{set\-All@{set\-All}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{set\-All}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::set\-All (
+\begin{DoxyParamCaption}
+\item[{int}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a80e1e53c0eb29c548c1d24556b0f8f9a}
+
+
+Sets the value of all semaphores in the set to the specified value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The value to set all semaphores in the set to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_a81f3eaf327c4ed2547a0962c9be52374}{\index{Semaphore\-Set@{Semaphore\-Set}!signal@{signal}}
+\index{signal@{signal}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{signal}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::signal (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{sem\-Num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a81f3eaf327c4ed2547a0962c9be52374}
+
+
+Signals a semaphore to wakeup a process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sem\-Num} & The semaphore to issue the signal to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+\hypertarget{classSemaphoreSet_a835d01b6d87fddf4fcb452f2467153e5}{\index{Semaphore\-Set@{Semaphore\-Set}!wait@{wait}}
+\index{wait@{wait}!SemaphoreSet@{Semaphore\-Set}}
+\subsubsection[{wait}]{\setlength{\rightskip}{0pt plus 5cm}int Semaphore\-Set\-::wait (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{sem\-Num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSemaphoreSet_a835d01b6d87fddf4fcb452f2467153e5}
+
+
+Issues a wait operation on the semaphore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sem\-Num} & The semaphore to issue the wait operation to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on failure. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SemaphoreSet_8cpp}{Semaphore\-Set.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,654 @@
+\hypertarget{server_8cpp}{\section{server.\-cpp File Reference}
+\label{server_8cpp}\index{server.\-cpp@{server.\-cpp}}
+}
+
+
+Server side of the T\-C\-P Distributed Information System implementation C\-S\-C552 Dr. Spiegel Spring 2020.  
+
+
+{\ttfamily \#include $<$arpa/inet.\-h$>$}\\*
+{\ttfamily \#include $<$cstdio$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$sys/socket.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}msg\-Packets.\-cpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Log\-Bin\-R\-W\-Sem\-Monitor.\-cpp\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{server_8cpp_a7926b63a45e7f730c5e5cf9688dd83b4}{P\-O\-R\-T\-N\-U\-M}~15005
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{server_8cpp_ae30537e51885547c69a6277fdf29be9c}{add\-Record} (F\-I\-L\-E $\ast$bin\-Ptr, char record\mbox{[}$\,$\mbox{]}, int record\-Size, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Adds a record to the bin file. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a456d5541e69775b23f79bcb002daf76e}{await\-Commands} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr)
+\begin{DoxyCompactList}\small\item\em Listens for incoming commands from the connected client. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a01d987fe28621bada46ef500e21002e2}{await\-Connections} (int listenfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr)
+\begin{DoxyCompactList}\small\item\em Listens for incoming client connections and creates child servers for each succesful connection. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a4b0dfde5bdb37c47762a8db554d7d89c}{change\-Record} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr, pid\-\_\-t cli\-P\-I\-D, int rec\-Idx, char record\mbox{[}$\,$\mbox{]}, int record\-Size, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Handles client request for the edit of a record from the dataset. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a2622d4b579a26529c9290b5ff428d3f7}{display\-Record} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr, pid\-\_\-t cli\-P\-I\-D, int rec\-Idx, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Handles client request for the retrieval of one or more records from the dataset. \end{DoxyCompactList}\item 
+string \hyperlink{server_8cpp_a05f0fa24e0403d90db4604dec9ec0211}{get\-Record} (F\-I\-L\-E $\ast$bin\-Ptr, int idx)
+\begin{DoxyCompactList}\small\item\em Retrieves a record with the provided index from the file specified. \end{DoxyCompactList}\item 
+int \hyperlink{server_8cpp_aaacd40a82a0c89568d6fe0c93785d4a7}{get\-Total\-Log\-Records} (F\-I\-L\-E $\ast$log\-Ptr)
+\begin{DoxyCompactList}\small\item\em Calculates and returns the number of log records stored in the server log file. \end{DoxyCompactList}\item 
+int \hyperlink{server_8cpp_a14e08b2c66bd212e38df0e402d94968c}{get\-Total\-Records} (F\-I\-L\-E $\ast$bin\-Ptr)
+\begin{DoxyCompactList}\small\item\em Calculates and returns the number of records stored in the binary data file. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a881166bfad2f934e3e033f4f78427f36}{handle\-Cmd} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr, \hyperlink{structserMsgPacket}{ser\-Msg\-Packet} client\-Msg, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Decides the appropriate course of action for a received command then logs the operation(s) performed. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_aacb671ea910a0c77518cc4c30d1ba006}{log\-Connection} (F\-I\-L\-E $\ast$log\-Ptr, string client\-Address)
+\begin{DoxyCompactList}\small\item\em Logs the successful connection of an incoming client. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a9bee497e642a61c2a4df696caf8d4c53}{log\-Request} (F\-I\-L\-E $\ast$log\-Ptr, pid\-\_\-t cli\-P\-I\-D, char cmd, int num\-Records=-\/1, int idx=-\/1)
+\begin{DoxyCompactList}\small\item\em Logs the client request and server response for any given operation. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a787efcd9c71caebe72021b3d2498864a}{new\-Record} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr, pid\-\_\-t cli\-P\-I\-D, char record\mbox{[}$\,$\mbox{]}, int record\-Size, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Handles client request for the addition of a new record to the dataset. \end{DoxyCompactList}\item 
+F\-I\-L\-E $\ast$ \hyperlink{server_8cpp_a13d86b644c60ee408de5b62d1d8d7425}{open\-File} (string filename, string filetype)
+\begin{DoxyCompactList}\small\item\em Attempts to open the file provided. Returns file pointer on successful open. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a7104945852a22459899cfa48ccc6479c}{receive\-Msgs} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Handles the receipt of messages from clients. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a45653baaf6d39d51819821e9a388c168}{record\-Count} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, F\-I\-L\-E $\ast$log\-Ptr, pid\-\_\-t cli\-P\-I\-D, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Handles client request for retrieving the record count. \end{DoxyCompactList}\item 
+int \hyperlink{server_8cpp_a1b0807cb5d91779d7acd4e9e5e1ebf60}{send\-All\-Records} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Retrieves each record in the file one by one and sends them to the requesting client. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a2ca45607817ba5030560e5335b369b0b}{send\-Log} (int commfd, F\-I\-L\-E $\ast$log\-Ptr, pid\-\_\-t cli\-P\-I\-D, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Handles client request for retrieving the contents of the server log. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_a582c9622bc7df8810af13d1bf9403b90}{send\-Log\-Record} (int commfd, F\-I\-L\-E $\ast$log\-Ptr, int idx, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Retrieves and sends a single record from the server log file. \end{DoxyCompactList}\item 
+void \hyperlink{server_8cpp_ae93d50386eedcd1ff84630d9f45ea29b}{send\-Record} (int commfd, F\-I\-L\-E $\ast$bin\-Ptr, int idx, \hyperlink{classLogBinRWSemMonitor}{Log\-Bin\-R\-W\-Sem\-Monitor} \&file\-Monitor)
+\begin{DoxyCompactList}\small\item\em Retrieves the record found at the provided index from the file and sends it to the requesting client. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Msg\-Packet $>$ }\\void \hyperlink{server_8cpp_a021bbe5a6f631f55ec2f78d06bb88635}{send\-Msg} (int commfd, Msg\-Packet msg)
+\begin{DoxyCompactList}\small\item\em Handles the transmission of messages to clients. \end{DoxyCompactList}\item 
+int \hyperlink{server_8cpp_a369794f9bc96d9f9a534c592a6aca058}{setup\-Connection} (int port)
+\begin{DoxyCompactList}\small\item\em Sets up the server connection by creating the listening socket, binding it to the server address, and creating the listening queue. \end{DoxyCompactList}\item 
+bool \hyperlink{server_8cpp_ab0907cc159cab5024eefad6a7ac17ddc}{update\-Record} (F\-I\-L\-E $\ast$bin\-Ptr, int idx, char record\mbox{[}$\,$\mbox{]}, int record\-Size)
+\begin{DoxyCompactList}\small\item\em Updates the record at the provided index. \end{DoxyCompactList}\item 
+int \hyperlink{server_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Calls the appropriate methods to ensure proper functionality of the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Server side of the T\-C\-P Distributed Information System implementation C\-S\-C552 Dr. Spiegel Spring 2020. \begin{DoxyAuthor}{Author}
+Griffin Nye 
+\end{DoxyAuthor}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{server_8cpp_a7926b63a45e7f730c5e5cf9688dd83b4}{\index{server.\-cpp@{server.\-cpp}!P\-O\-R\-T\-N\-U\-M@{P\-O\-R\-T\-N\-U\-M}}
+\index{P\-O\-R\-T\-N\-U\-M@{P\-O\-R\-T\-N\-U\-M}!server.cpp@{server.\-cpp}}
+\subsubsection[{P\-O\-R\-T\-N\-U\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-O\-R\-T\-N\-U\-M~15005}}\label{server_8cpp_a7926b63a45e7f730c5e5cf9688dd83b4}
+My assigned port on acad for the server's listening socket. 
+
+\subsection{Function Documentation}
+\hypertarget{server_8cpp_ae30537e51885547c69a6277fdf29be9c}{\index{server.\-cpp@{server.\-cpp}!add\-Record@{add\-Record}}
+\index{add\-Record@{add\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{add\-Record}]{\setlength{\rightskip}{0pt plus 5cm}bool add\-Record (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{char}]{record\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{record\-Size, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_ae30537e51885547c69a6277fdf29be9c}
+
+
+Adds a record to the bin file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bin\-Ptr} & File pointer to the bin file \\
+\hline
+{\em record} & The record to be added. \\
+\hline
+{\em record\-Size} & Size of the record to be added. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset and server log. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The success of the addition 
+\end{DoxyReturn}
+\hypertarget{server_8cpp_a456d5541e69775b23f79bcb002daf76e}{\index{server.\-cpp@{server.\-cpp}!await\-Commands@{await\-Commands}}
+\index{await\-Commands@{await\-Commands}!server.cpp@{server.\-cpp}}
+\subsubsection[{await\-Commands}]{\setlength{\rightskip}{0pt plus 5cm}void await\-Commands (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a456d5541e69775b23f79bcb002daf76e}
+
+
+Listens for incoming commands from the connected client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a01d987fe28621bada46ef500e21002e2}{\index{server.\-cpp@{server.\-cpp}!await\-Connections@{await\-Connections}}
+\index{await\-Connections@{await\-Connections}!server.cpp@{server.\-cpp}}
+\subsubsection[{await\-Connections}]{\setlength{\rightskip}{0pt plus 5cm}void await\-Connections (
+\begin{DoxyParamCaption}
+\item[{int}]{listenfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a01d987fe28621bada46ef500e21002e2}
+
+
+Listens for incoming client connections and creates child servers for each succesful connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listenfd} & The listening socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a4b0dfde5bdb37c47762a8db554d7d89c}{\index{server.\-cpp@{server.\-cpp}!change\-Record@{change\-Record}}
+\index{change\-Record@{change\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{change\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void change\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{pid\-\_\-t}]{cli\-P\-I\-D, }
+\item[{int}]{rec\-Idx, }
+\item[{char}]{record\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{record\-Size, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a4b0dfde5bdb37c47762a8db554d7d89c}
+
+
+Handles client request for the edit of a record from the dataset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em cli\-P\-I\-D} & The requesting client's P\-I\-D. \\
+\hline
+{\em rec\-Idx} & The index of the requested record to edit. \\
+\hline
+{\em record} & The edited record string. \\
+\hline
+{\em record\-Size} & The size of the edited record string. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset and server log. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a2622d4b579a26529c9290b5ff428d3f7}{\index{server.\-cpp@{server.\-cpp}!display\-Record@{display\-Record}}
+\index{display\-Record@{display\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{display\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void display\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{pid\-\_\-t}]{cli\-P\-I\-D, }
+\item[{int}]{rec\-Idx, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a2622d4b579a26529c9290b5ff428d3f7}
+
+
+Handles client request for the retrieval of one or more records from the dataset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em cli\-P\-I\-D} & The requesting client's P\-I\-D. \\
+\hline
+{\em rec\-Idx} & The index of the requested record (-\/999 for all records). \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset and server log. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a05f0fa24e0403d90db4604dec9ec0211}{\index{server.\-cpp@{server.\-cpp}!get\-Record@{get\-Record}}
+\index{get\-Record@{get\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{get\-Record}]{\setlength{\rightskip}{0pt plus 5cm}string get\-Record (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a05f0fa24e0403d90db4604dec9ec0211}
+
+
+Retrieves a record with the provided index from the file specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bin\-Ptr} & File pointer to the bin file \\
+\hline
+{\em idx} & Index of the desired record \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired record in C-\/string format 
+\end{DoxyReturn}
+\hypertarget{server_8cpp_aaacd40a82a0c89568d6fe0c93785d4a7}{\index{server.\-cpp@{server.\-cpp}!get\-Total\-Log\-Records@{get\-Total\-Log\-Records}}
+\index{get\-Total\-Log\-Records@{get\-Total\-Log\-Records}!server.cpp@{server.\-cpp}}
+\subsubsection[{get\-Total\-Log\-Records}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Total\-Log\-Records (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_aaacd40a82a0c89568d6fe0c93785d4a7}
+
+
+Calculates and returns the number of log records stored in the server log file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total number of log records stored in log server file 
+\end{DoxyReturn}
+\hypertarget{server_8cpp_a14e08b2c66bd212e38df0e402d94968c}{\index{server.\-cpp@{server.\-cpp}!get\-Total\-Records@{get\-Total\-Records}}
+\index{get\-Total\-Records@{get\-Total\-Records}!server.cpp@{server.\-cpp}}
+\subsubsection[{get\-Total\-Records}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Total\-Records (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a14e08b2c66bd212e38df0e402d94968c}
+
+
+Calculates and returns the number of records stored in the binary data file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total number of records stored in binary data file. 
+\end{DoxyReturn}
+\hypertarget{server_8cpp_a881166bfad2f934e3e033f4f78427f36}{\index{server.\-cpp@{server.\-cpp}!handle\-Cmd@{handle\-Cmd}}
+\index{handle\-Cmd@{handle\-Cmd}!server.cpp@{server.\-cpp}}
+\subsubsection[{handle\-Cmd}]{\setlength{\rightskip}{0pt plus 5cm}void handle\-Cmd (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{{\bf ser\-Msg\-Packet}}]{client\-Msg, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a881166bfad2f934e3e033f4f78427f36}
+
+
+Decides the appropriate course of action for a received command then logs the operation(s) performed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em client\-Msg} & The message packet received from the client. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset and server log. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_aacb671ea910a0c77518cc4c30d1ba006}{\index{server.\-cpp@{server.\-cpp}!log\-Connection@{log\-Connection}}
+\index{log\-Connection@{log\-Connection}!server.cpp@{server.\-cpp}}
+\subsubsection[{log\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void log\-Connection (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{string}]{client\-Address}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_aacb671ea910a0c77518cc4c30d1ba006}
+
+
+Logs the successful connection of an incoming client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em client\-Address} & The string representation of the client's address. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a9bee497e642a61c2a4df696caf8d4c53}{\index{server.\-cpp@{server.\-cpp}!log\-Request@{log\-Request}}
+\index{log\-Request@{log\-Request}!server.cpp@{server.\-cpp}}
+\subsubsection[{log\-Request}]{\setlength{\rightskip}{0pt plus 5cm}void log\-Request (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{pid\-\_\-t}]{cli\-P\-I\-D, }
+\item[{char}]{cmd, }
+\item[{int}]{num\-Records = {\ttfamily -\/1}, }
+\item[{int}]{idx = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a9bee497e642a61c2a4df696caf8d4c53}
+
+
+Logs the client request and server response for any given operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em cli\-P\-I\-D} & The connecting client's P\-I\-D. \\
+\hline
+{\em cmd} & Character representing the command issued to the server \\
+\hline
+{\em num\-Records} & (optional) The number of records stored on server(\-C\-M\-D)/sent to client(\-G\-E\-T) \\
+\hline
+{\em idx} & (optional) The index of the desired record from G\-E\-T command \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{\index{server.\-cpp@{server.\-cpp}!main@{main}}
+\index{main@{main}!server.cpp@{server.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Calls the appropriate methods to ensure proper functionality of the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of command-\/line arguments \\
+\hline
+{\em argv} & List of command-\/line arguments \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a787efcd9c71caebe72021b3d2498864a}{\index{server.\-cpp@{server.\-cpp}!new\-Record@{new\-Record}}
+\index{new\-Record@{new\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{new\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void new\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{pid\-\_\-t}]{cli\-P\-I\-D, }
+\item[{char}]{record\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{record\-Size, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a787efcd9c71caebe72021b3d2498864a}
+
+
+Handles client request for the addition of a new record to the dataset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em cli\-P\-I\-D} & The requesting client's P\-I\-D. \\
+\hline
+{\em record} & The record to be added. \\
+\hline
+{\em record\-Size} & The size of the record to be added. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset and server log. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a13d86b644c60ee408de5b62d1d8d7425}{\index{server.\-cpp@{server.\-cpp}!open\-File@{open\-File}}
+\index{open\-File@{open\-File}!server.cpp@{server.\-cpp}}
+\subsubsection[{open\-File}]{\setlength{\rightskip}{0pt plus 5cm}F\-I\-L\-E $\ast$ open\-File (
+\begin{DoxyParamCaption}
+\item[{string}]{filename, }
+\item[{string}]{filetype}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a13d86b644c60ee408de5b62d1d8d7425}
+
+
+Attempts to open the file provided. Returns file pointer on successful open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The path to the file \\
+\hline
+{\em filetype} & The type of file being transmitted (\char`\"{}data\char`\"{} or \char`\"{}log\char`\"{}). Used to generate appropriate error message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+file\-Pointer on successful open; server exits on failed open. 
+\end{DoxyReturn}
+\hypertarget{server_8cpp_a7104945852a22459899cfa48ccc6479c}{\index{server.\-cpp@{server.\-cpp}!receive\-Msgs@{receive\-Msgs}}
+\index{receive\-Msgs@{receive\-Msgs}!server.cpp@{server.\-cpp}}
+\subsubsection[{receive\-Msgs}]{\setlength{\rightskip}{0pt plus 5cm}void receive\-Msgs (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a7104945852a22459899cfa48ccc6479c}
+
+
+Handles the receipt of messages from clients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset and server log. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a45653baaf6d39d51819821e9a388c168}{\index{server.\-cpp@{server.\-cpp}!record\-Count@{record\-Count}}
+\index{record\-Count@{record\-Count}!server.cpp@{server.\-cpp}}
+\subsubsection[{record\-Count}]{\setlength{\rightskip}{0pt plus 5cm}void record\-Count (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{pid\-\_\-t}]{cli\-P\-I\-D, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a45653baaf6d39d51819821e9a388c168}
+
+
+Handles client request for retrieving the record count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file. \\
+\hline
+{\em log\-Ptr} & The file poitner to the server log file. \\
+\hline
+{\em cli\-P\-I\-D} & The requesting client's P\-I\-D. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset and server log. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a1b0807cb5d91779d7acd4e9e5e1ebf60}{\index{server.\-cpp@{server.\-cpp}!send\-All\-Records@{send\-All\-Records}}
+\index{send\-All\-Records@{send\-All\-Records}!server.cpp@{server.\-cpp}}
+\subsubsection[{send\-All\-Records}]{\setlength{\rightskip}{0pt plus 5cm}int send\-All\-Records (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a1b0807cb5d91779d7acd4e9e5e1ebf60}
+
+
+Retrieves each record in the file one by one and sends them to the requesting client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of records sent to the client 
+\end{DoxyReturn}
+\hypertarget{server_8cpp_a2ca45607817ba5030560e5335b369b0b}{\index{server.\-cpp@{server.\-cpp}!send\-Log@{send\-Log}}
+\index{send\-Log@{send\-Log}!server.cpp@{server.\-cpp}}
+\subsubsection[{send\-Log}]{\setlength{\rightskip}{0pt plus 5cm}void send\-Log (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{pid\-\_\-t}]{cli\-P\-I\-D, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a2ca45607817ba5030560e5335b369b0b}
+
+
+Handles client request for retrieving the contents of the server log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em cli\-P\-I\-D} & The requesting client's P\-I\-D. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a582c9622bc7df8810af13d1bf9403b90}{\index{server.\-cpp@{server.\-cpp}!send\-Log\-Record@{send\-Log\-Record}}
+\index{send\-Log\-Record@{send\-Log\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{send\-Log\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void send\-Log\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{log\-Ptr, }
+\item[{int}]{idx, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a582c9622bc7df8810af13d1bf9403b90}
+
+
+Retrieves and sends a single record from the server log file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em log\-Ptr} & The file pointer to the server log file. \\
+\hline
+{\em idx} & The index of the log record to be sent. \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a021bbe5a6f631f55ec2f78d06bb88635}{\index{server.\-cpp@{server.\-cpp}!send\-Msg@{send\-Msg}}
+\index{send\-Msg@{send\-Msg}!server.cpp@{server.\-cpp}}
+\subsubsection[{send\-Msg}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Msg\-Packet $>$ void send\-Msg (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{Msg\-Packet}]{msg}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a021bbe5a6f631f55ec2f78d06bb88635}
+
+
+Handles the transmission of messages to clients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em msg} & The message packet to be transmitted \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_ae93d50386eedcd1ff84630d9f45ea29b}{\index{server.\-cpp@{server.\-cpp}!send\-Record@{send\-Record}}
+\index{send\-Record@{send\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{send\-Record}]{\setlength{\rightskip}{0pt plus 5cm}void send\-Record (
+\begin{DoxyParamCaption}
+\item[{int}]{commfd, }
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{int}]{idx, }
+\item[{{\bf Log\-Bin\-R\-W\-Sem\-Monitor} \&}]{file\-Monitor}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_ae93d50386eedcd1ff84630d9f45ea29b}
+
+
+Retrieves the record found at the provided index from the file and sends it to the requesting client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commfd} & The communications socket's file descriptor. \\
+\hline
+{\em bin\-Ptr} & The file pointer to the binary data file \\
+\hline
+{\em idx} & The index of the desired record \\
+\hline
+{\em file\-Monitor} & Monitor for synchronizing read \& write operations on the dataset. \\
+\hline
+\end{DoxyParams}
+\hypertarget{server_8cpp_a369794f9bc96d9f9a534c592a6aca058}{\index{server.\-cpp@{server.\-cpp}!setup\-Connection@{setup\-Connection}}
+\index{setup\-Connection@{setup\-Connection}!server.cpp@{server.\-cpp}}
+\subsubsection[{setup\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}int setup\-Connection (
+\begin{DoxyParamCaption}
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_a369794f9bc96d9f9a534c592a6aca058}
+
+
+Sets up the server connection by creating the listening socket, binding it to the server address, and creating the listening queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The server's dedicated port number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The listening socket's file descriptor on successful creation; client exits on failure. 
+\end{DoxyReturn}
+\hypertarget{server_8cpp_ab0907cc159cab5024eefad6a7ac17ddc}{\index{server.\-cpp@{server.\-cpp}!update\-Record@{update\-Record}}
+\index{update\-Record@{update\-Record}!server.cpp@{server.\-cpp}}
+\subsubsection[{update\-Record}]{\setlength{\rightskip}{0pt plus 5cm}bool update\-Record (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{bin\-Ptr, }
+\item[{int}]{idx, }
+\item[{char}]{record\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{record\-Size}
+\end{DoxyParamCaption}
+)}}\label{server_8cpp_ab0907cc159cab5024eefad6a7ac17ddc}
+
+
+Updates the record at the provided index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bin\-Ptr} & The file pointer to the bin file. \\
+\hline
+{\em idx} & The index of the record to be updated. \\
+\hline
+{\em record} & The updated record string. \\
+\hline
+{\em record\-Size} & The size of the updated record string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The success of updating the record. 
+\end{DoxyReturn}

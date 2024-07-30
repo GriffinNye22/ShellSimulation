@@ -1,0 +1,71 @@
+\hypertarget{createBin_8cpp}{\section{create\-Bin.\-cpp File Reference}
+\label{createBin_8cpp}\index{create\-Bin.\-cpp@{create\-Bin.\-cpp}}
+}
+
+
+C\-S\-C552 Dr. Spiegel Spring 2020 Transfers data from an input .csv file into an output binary-\/encoded file, whose filenames are provided as command-\/line arguments. Returns the number of lines read from the in\-File or failed open flags.  
+
+
+{\ttfamily \#include $<$cstring$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{createBin_8cpp_a494557f91068369a5bf892d19793a5a7}{transfer\-Data} (char $\ast$in\-File, char $\ast$out\-File)
+\begin{DoxyCompactList}\small\item\em Transfers data from the input csv file using File Pointers into the output binary file using file streams. \end{DoxyCompactList}\item 
+int \hyperlink{createBin_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Ensures proper usage of the executable and calls for the transfer of the csv data to binary-\/encoded data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C\-S\-C552 Dr. Spiegel Spring 2020 Transfers data from an input .csv file into an output binary-\/encoded file, whose filenames are provided as command-\/line arguments. Returns the number of lines read from the in\-File or failed open flags. \begin{DoxyAuthor}{Author}
+Griffin Nye 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{createBin_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{\index{create\-Bin.\-cpp@{create\-Bin.\-cpp}!main@{main}}
+\index{main@{main}!createBin.cpp@{create\-Bin.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{createBin_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Ensures proper usage of the executable and calls for the transfer of the csv data to binary-\/encoded data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command line arguments \\
+\hline
+{\em argv} & Array of command line arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of lines read from the in\-File. -\/1 indicates in\-File\-\_\-\-F\-A\-I\-L, 0 indicates out\-File fail. 
+\end{DoxyReturn}
+\hypertarget{createBin_8cpp_a494557f91068369a5bf892d19793a5a7}{\index{create\-Bin.\-cpp@{create\-Bin.\-cpp}!transfer\-Data@{transfer\-Data}}
+\index{transfer\-Data@{transfer\-Data}!createBin.cpp@{create\-Bin.\-cpp}}
+\subsubsection[{transfer\-Data}]{\setlength{\rightskip}{0pt plus 5cm}int transfer\-Data (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{in\-File, }
+\item[{char $\ast$}]{out\-File}
+\end{DoxyParamCaption}
+)}}\label{createBin_8cpp_a494557f91068369a5bf892d19793a5a7}
+
+
+Transfers data from the input csv file using File Pointers into the output binary file using file streams. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\-File} & Filename for the in\-File. \\
+\hline
+{\em out\-File} & Filename for the out\-File. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of lines read from the in\-File. -\/1 indicates in\-File\-\_\-\-F\-A\-I\-L 0 indicates out\-File fail. 
+\end{DoxyReturn}

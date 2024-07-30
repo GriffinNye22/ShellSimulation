@@ -1,0 +1,67 @@
+\hypertarget{classLogBinRWSemMonitor}{\section{Log\-Bin\-R\-W\-Sem\-Monitor Class Reference}
+\label{classLogBinRWSemMonitor}\index{Log\-Bin\-R\-W\-Sem\-Monitor@{Log\-Bin\-R\-W\-Sem\-Monitor}}
+}
+
+
+Monitor for managing Readers and Writers to the bin and log files using semaphores.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLogBinRWSemMonitor_ae328b2edbd8862b20980450d33b45ffc}{Log\-Bin\-R\-W\-Sem\-Monitor} (int sem\-Key)
+\begin{DoxyCompactList}\small\item\em Constructs the Log\-Bin\-Monitor object. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_afd102da36da0e3185fd0c4895228efb4}{void \hyperlink{classLogBinRWSemMonitor_afd102da36da0e3185fd0c4895228efb4}{init} ()}\label{classLogBinRWSemMonitor_afd102da36da0e3185fd0c4895228efb4}
+
+\begin{DoxyCompactList}\small\item\em Initializes all semaphores in sem\-Set to their default values. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_aaeb20231cb1c0428970ee8443ec498ce}{void \hyperlink{classLogBinRWSemMonitor_aaeb20231cb1c0428970ee8443ec498ce}{add\-Bin\-Reader} ()}\label{classLogBinRWSemMonitor_aaeb20231cb1c0428970ee8443ec498ce}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a bin Reader and prepare it for reading from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_a3450b5c16b4064d21e06c75cfc793ef6}{void \hyperlink{classLogBinRWSemMonitor_a3450b5c16b4064d21e06c75cfc793ef6}{rem\-Bin\-Reader} ()}\label{classLogBinRWSemMonitor_a3450b5c16b4064d21e06c75cfc793ef6}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Reader after it reads from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_a10eb8513d3acc3005b9b8509a99a8422}{void \hyperlink{classLogBinRWSemMonitor_a10eb8513d3acc3005b9b8509a99a8422}{add\-Bin\-Writer} ()}\label{classLogBinRWSemMonitor_a10eb8513d3acc3005b9b8509a99a8422}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a Writer and prepare it for writing to a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_afd9f3b200a4f35869eef82f6f8ba0ed7}{void \hyperlink{classLogBinRWSemMonitor_afd9f3b200a4f35869eef82f6f8ba0ed7}{rem\-Bin\-Writer} ()}\label{classLogBinRWSemMonitor_afd9f3b200a4f35869eef82f6f8ba0ed7}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Writer after it writes to a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_a6a2706cf52a6fcf131825f89583d9b08}{void \hyperlink{classLogBinRWSemMonitor_a6a2706cf52a6fcf131825f89583d9b08}{add\-Log\-Reader} ()}\label{classLogBinRWSemMonitor_a6a2706cf52a6fcf131825f89583d9b08}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a Reader and prepare it for reading from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_ae11f2d074e2cef3f883516e5de66ceec}{void \hyperlink{classLogBinRWSemMonitor_ae11f2d074e2cef3f883516e5de66ceec}{rem\-Log\-Reader} ()}\label{classLogBinRWSemMonitor_ae11f2d074e2cef3f883516e5de66ceec}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Reader after it reads from a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_a45ca21fec4650cbed907f191e2ff7f56}{void \hyperlink{classLogBinRWSemMonitor_a45ca21fec4650cbed907f191e2ff7f56}{add\-Log\-Writer} ()}\label{classLogBinRWSemMonitor_a45ca21fec4650cbed907f191e2ff7f56}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to add a Writer and prepare it for writing to a critical section. \end{DoxyCompactList}\item 
+\hypertarget{classLogBinRWSemMonitor_a26db365069fa53083d040adbfa34c858}{void \hyperlink{classLogBinRWSemMonitor_a26db365069fa53083d040adbfa34c858}{rem\-Log\-Writer} ()}\label{classLogBinRWSemMonitor_a26db365069fa53083d040adbfa34c858}
+
+\begin{DoxyCompactList}\small\item\em Performs the necessary synchronization to remove a Writer after it writes to a critical section. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Monitor for managing Readers and Writers to the bin and log files using semaphores. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLogBinRWSemMonitor_ae328b2edbd8862b20980450d33b45ffc}{\index{Log\-Bin\-R\-W\-Sem\-Monitor@{Log\-Bin\-R\-W\-Sem\-Monitor}!Log\-Bin\-R\-W\-Sem\-Monitor@{Log\-Bin\-R\-W\-Sem\-Monitor}}
+\index{Log\-Bin\-R\-W\-Sem\-Monitor@{Log\-Bin\-R\-W\-Sem\-Monitor}!LogBinRWSemMonitor@{Log\-Bin\-R\-W\-Sem\-Monitor}}
+\subsubsection[{Log\-Bin\-R\-W\-Sem\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}Log\-Bin\-R\-W\-Sem\-Monitor\-::\-Log\-Bin\-R\-W\-Sem\-Monitor (
+\begin{DoxyParamCaption}
+\item[{int}]{sem\-Key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLogBinRWSemMonitor_ae328b2edbd8862b20980450d33b45ffc}
+
+
+Constructs the Log\-Bin\-Monitor object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sem\-Key} & The key for the \hyperlink{classSemaphoreSet}{Semaphore\-Set} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{LogBinRWSemMonitor_8cpp}{Log\-Bin\-R\-W\-Sem\-Monitor.\-cpp}\end{DoxyCompactItemize}

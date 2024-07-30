@@ -1,0 +1,146 @@
+\hypertarget{classSharedMemoryManager}{\section{Shared\-Memory\-Manager Class Reference}
+\label{classSharedMemoryManager}\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}}
+}
+
+
+Wrapper\-Class Implementation of U\-N\-I\-X Shared Memory for easier creation, storage, and retrieval.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structSharedMemoryManager_1_1sharedMemBlock}{shared\-Mem\-Block}
+\begin{DoxyCompactList}\small\item\em Container struct of all fields in a client process' shared memory block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \\*
+\hyperlink{structSharedMemoryManager_1_1sharedMemBlock}{Shared\-Memory\-Manager\-::shared\-Mem\-Block} \hyperlink{classSharedMemoryManager_a30d8438be6747a19fc23450514445cab}{Shared\-Memory\-Manager} (int key, int perms)
+\begin{DoxyCompactList}\small\item\em Allocates the shared memory space and constructs the Shared\-Memory object. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{classSharedMemoryManager_a4118ad7e39bcb21bc858cd4b307a830e}{attach} ()
+\begin{DoxyCompactList}\small\item\em Attaches the first open shared memory address to the calling process. \end{DoxyCompactList}\item 
+bool \hyperlink{classSharedMemoryManager_a5c8eb92892c13e1e3007d236d538c8e7}{detach} ()
+\begin{DoxyCompactList}\small\item\em Detaches the shared memory space from the calling process. \end{DoxyCompactList}\item 
+bool \hyperlink{classSharedMemoryManager_a95d1f28eb377b4988dcf1724dcffe946}{destroy} ()
+\begin{DoxyCompactList}\small\item\em Destroys the shared memory space. (N\-O\-T\-E\-: This is N\-O\-T a destructor for the Shared\-Memory object, however, calling this will render the object useless.) \end{DoxyCompactList}\item 
+\hypertarget{classSharedMemoryManager_aed3b566162518064ccca17fa071e64b9}{void \hyperlink{classSharedMemoryManager_aed3b566162518064ccca17fa071e64b9}{increment\-Num\-Clients} ()}\label{classSharedMemoryManager_aed3b566162518064ccca17fa071e64b9}
+
+\begin{DoxyCompactList}\small\item\em Increments the number of clients field in the shared memory space. \end{DoxyCompactList}\item 
+\hypertarget{classSharedMemoryManager_a106346050cf61a7f270f078632d510f4}{void \hyperlink{classSharedMemoryManager_a106346050cf61a7f270f078632d510f4}{decrement\-Num\-Clients} ()}\label{classSharedMemoryManager_a106346050cf61a7f270f078632d510f4}
+
+\begin{DoxyCompactList}\small\item\em Decrements the number of clients field in the shared memory space. \end{DoxyCompactList}\item 
+void \hyperlink{classSharedMemoryManager_ad598919ed2f1ca742b7f004587403ab8}{init\-Block} (pid\-\_\-t cli\-P\-I\-D)
+\begin{DoxyCompactList}\small\item\em Initializes the P\-I\-D and start\-Time fields of the shared memory block and stores the pointer to this block. \end{DoxyCompactList}\item 
+\hypertarget{classSharedMemoryManager_afc90af415f4d62609a66db29c2c185cd}{void \hyperlink{classSharedMemoryManager_afc90af415f4d62609a66db29c2c185cd}{clear\-Block} ()}\label{classSharedMemoryManager_afc90af415f4d62609a66db29c2c185cd}
+
+\begin{DoxyCompactList}\small\item\em Clears the calling process' shared memory block. \end{DoxyCompactList}\item 
+\hypertarget{classSharedMemoryManager_a7937104b69646b8c1216504d920cc417}{void \hyperlink{classSharedMemoryManager_a7937104b69646b8c1216504d920cc417}{increment\-Command} ()}\label{classSharedMemoryManager_a7937104b69646b8c1216504d920cc417}
+
+\begin{DoxyCompactList}\small\item\em Increments/\-Updates the num\-Command and last\-Msg\-Time fields of the shared memory block. \end{DoxyCompactList}\item 
+struct \hyperlink{structSharedMemoryManager_1_1sharedMemBlock}{shared\-Mem\-Block} $\ast$ \hyperlink{classSharedMemoryManager_a3ec080502acf8c32b97024ad65e83724}{find\-Avail\-Block} ()
+\begin{DoxyCompactList}\small\item\em Finds the first available shared memory block in the shared memory space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper\-Class Implementation of U\-N\-I\-X Shared Memory for easier creation, storage, and retrieval. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSharedMemoryManager_a30d8438be6747a19fc23450514445cab}{\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}!Shared\-Memory\-Manager@{Shared\-Memory\-Manager}}
+\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}!SharedMemoryManager@{Shared\-Memory\-Manager}}
+\subsubsection[{Shared\-Memory\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Shared\-Memory\-Manager\-::shared\-Mem\-Block} Shared\-Memory\-Manager\-::\-Shared\-Memory\-Manager (
+\begin{DoxyParamCaption}
+\item[{int}]{key, }
+\item[{int}]{perms}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSharedMemoryManager_a30d8438be6747a19fc23450514445cab}
+
+
+Allocates the shared memory space and constructs the Shared\-Memory object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key for the shared memory space. \\
+\hline
+{\em perms} & The permission flags for the shared memory space. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSharedMemoryManager_a4118ad7e39bcb21bc858cd4b307a830e}{\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}!attach@{attach}}
+\index{attach@{attach}!SharedMemoryManager@{Shared\-Memory\-Manager}}
+\subsubsection[{attach}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ Shared\-Memory\-Manager\-::attach (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSharedMemoryManager_a4118ad7e39bcb21bc858cd4b307a830e}
+
+
+Attaches the first open shared memory address to the calling process. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the first byte of the shared memory space. N\-U\-L\-L on failure to attach. 
+\end{DoxyReturn}
+\hypertarget{classSharedMemoryManager_a95d1f28eb377b4988dcf1724dcffe946}{\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}!destroy@{destroy}}
+\index{destroy@{destroy}!SharedMemoryManager@{Shared\-Memory\-Manager}}
+\subsubsection[{destroy}]{\setlength{\rightskip}{0pt plus 5cm}bool Shared\-Memory\-Manager\-::destroy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSharedMemoryManager_a95d1f28eb377b4988dcf1724dcffe946}
+
+
+Destroys the shared memory space. (N\-O\-T\-E\-: This is N\-O\-T a destructor for the Shared\-Memory object, however, calling this will render the object useless.) 
+
+\begin{DoxyReturn}{Returns}
+Success status of the call. 
+\end{DoxyReturn}
+\hypertarget{classSharedMemoryManager_a5c8eb92892c13e1e3007d236d538c8e7}{\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}!detach@{detach}}
+\index{detach@{detach}!SharedMemoryManager@{Shared\-Memory\-Manager}}
+\subsubsection[{detach}]{\setlength{\rightskip}{0pt plus 5cm}bool Shared\-Memory\-Manager\-::detach (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSharedMemoryManager_a5c8eb92892c13e1e3007d236d538c8e7}
+
+
+Detaches the shared memory space from the calling process. 
+
+\begin{DoxyReturn}{Returns}
+Success status of the call. 
+\end{DoxyReturn}
+\hypertarget{classSharedMemoryManager_a3ec080502acf8c32b97024ad65e83724}{\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}!find\-Avail\-Block@{find\-Avail\-Block}}
+\index{find\-Avail\-Block@{find\-Avail\-Block}!SharedMemoryManager@{Shared\-Memory\-Manager}}
+\subsubsection[{find\-Avail\-Block}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf shared\-Mem\-Block}$\ast$ Shared\-Memory\-Manager\-::find\-Avail\-Block (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSharedMemoryManager_a3ec080502acf8c32b97024ad65e83724}
+
+
+Finds the first available shared memory block in the shared memory space. 
+
+\begin{DoxyReturn}{Returns}
+The \hyperlink{structSharedMemoryManager_1_1sharedMemBlock}{shared\-Mem\-Block} struct pointer to the first available shared memory block. 
+\end{DoxyReturn}
+\hypertarget{classSharedMemoryManager_ad598919ed2f1ca742b7f004587403ab8}{\index{Shared\-Memory\-Manager@{Shared\-Memory\-Manager}!init\-Block@{init\-Block}}
+\index{init\-Block@{init\-Block}!SharedMemoryManager@{Shared\-Memory\-Manager}}
+\subsubsection[{init\-Block}]{\setlength{\rightskip}{0pt plus 5cm}void Shared\-Memory\-Manager\-::init\-Block (
+\begin{DoxyParamCaption}
+\item[{pid\-\_\-t}]{cli\-P\-I\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classSharedMemoryManager_ad598919ed2f1ca742b7f004587403ab8}
+
+
+Initializes the P\-I\-D and start\-Time fields of the shared memory block and stores the pointer to this block. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cli\-P\-I\-D} & The calling process' P\-I\-D. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{SharedMemoryManager_8cpp}{Shared\-Memory\-Manager.\-cpp}\end{DoxyCompactItemize}
