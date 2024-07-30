@@ -5,7 +5,7 @@ A Shell Simulation for processing retrieval, addition, and update requests from 
 |----------------------:|-------------------------------------------------------------------------------------------------------------------------------|
 |**Last Modified Date:**| 5/26/21                                                                                                                       |
 |**Last Modifications:**| Implemented SemaphoreSet & SharedMemoryManager Wrapper Classes and LogBinRWSemMonitor Class (with some concurrency issues :( )|
-|     **Documentation:**| [Doc Site](https://codedocs.xyz/GriffinNye22/SkipBo/)                                                                         |  
+|     **Documentation:**| [Doc Site](https://codedocs.xyz/GriffinNye22/ShellSimulation/)                                                                |  
 |                       | [Design Docs](https://github.com/GriffinNye22/SkipBo/tree/main/Design%20Documents%20%26%20Page%20Views)                       |
 |          **Platform:**| UNIX                                                                                                                          |
 |          **Language:**| C                                                                                                                             |
