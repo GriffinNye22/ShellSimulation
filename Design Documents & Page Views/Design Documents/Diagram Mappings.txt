@@ -1,0 +1,5 @@
+ChangeRecordActivityDiagram.png - Activity Diagram depicting Client-Server Communication for the Change Record Menu Option
+DisplayRecordActivityDiagram.png - Activity Diagram depicting Client-Server Communication for the Display Record Menu Option
+GeneralStructureActivityDiagram.png - Activity Diagram depicting the General Structure for Client-Server Communication
+NewRecordActivityDiagram.png - Activity Diagram depicting Client-Server Communication for the New Record Menu Option
+ShowLogActivityDiagram.png - Activity Diagram depicting Client-Server Communication for the Show Log Menu Option
