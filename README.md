@@ -12,8 +12,8 @@ A Shell Simulation for processing retrieval, addition, and update requests from 
 
 ## Purpose:
 The purpose of this project was to utilize a dataset chosen from Kaggle.com to 
-analyze a dataset while also learning how to make concurrent operations
-on the dataset from multiple clients. I originally selected a dataset containing data about
+analyze the data while also learning how to make concurrent operations
+on the dataset from multiple clients. I originally selected a dataset on
 video-game related sales from 1990-2020. However, I cleansed and shrunk the dataset
 down to only include dates from July 2019 - June 2020. I wanted to see
 the effects of the COVID-19 pandemic on the video game industry, but did not notice when 
@@ -26,7 +26,7 @@ upon further inspection, the revenues for the Game Content field were
 tremendously higher than the revenues for the Software field for the months 
 before. This lack of a Software field and addition of a new field would 
 have skewed the data, especially since one of the fields is a total field,
-so in order to maintain 4 fields of data, I changed the date range of the dataset 
+so in order to maintain 4 fields of data I changed the date range of the dataset 
 to include the last month possessing a value for the Software field, while still
 maintaining a full year of data.
 
@@ -106,7 +106,7 @@ serPacket: public intRecPacket {
 }
 ```
 serPacket is a union struct of all packet types that is used by the server
-for reading incoming messages. It's relevant fields are populated and used
+for reading incoming messages. Its relevant fields are populated and used
 to construct the appropriate packet type to be sent back to the client.
 
 **COMMANDS USED WITH:** ALL RECEIVED MESSAGES ON SERVER
@@ -128,8 +128,8 @@ the client when the Show Log menu option is selected.
 
 **NOTE:** record indexes are 1-based in my implementation.
 	
-For my design, I decided that I wanted to make everything as modular as possible,
-as I noticed there are a lot of instances where the same data needs to be sent
+For my design, I decided that I wanted to make everything as modular as possible.
+I noticed there are a lot of instances where the same data needs to be sent
 or received in multiple places, so I wanted to be able to reuse as much code as
 possible to make my job a lot easier. 
 
@@ -138,6 +138,17 @@ client and the server. At this point in time, these methods were those for
 displaying menus, executing the required actions for a menu option, retrieving 
 user input where required, sending and receiving messages,and basic file 
 operations on the server side such as getting total records or adding a record. 
+
+Sending and receiving packets on the client-side were both separated into their own
+respective methods, sendMsg() and receiveMsg(), so as not to clutter the code with a
+mass of msgsnd() and msgrcv() system calls. These methods utilize the polymorphic
+nature of the message packets and the Liskov Substitution Principle by accepting a
+template parameter of a defined type: MsgPacket, allowing me to simply pass whatever
+message packet type needs to be sent or received to these methods, reducing the need to
+write multiple sendMsg() and receiveMsg() methods with various signatures. Sending
+messages on the server-side behaves in the same manner, however, receiving messages on
+the server-side utilizes a union packet: SerPacket, which contains fields for all of the
+possible packet types the server could receive on the message queue.
 
 From here I began developing diagrams similar to a sequence diagram for the
 interactions between client and server. The first diagram describes the general overall
@@ -159,49 +170,49 @@ server by getting them both to startup properly.
 **STARTUP:**
   > Starting both the client and server up was pretty simple. Server creates the message queue and then opens the bin file, exiting if either of those fail, while the client attempts to connect
   > to the message queue and closes on failure of that. Connections were handled on the server side using two methods: setupConnection(): which creates a socket, binds the server address to said
-  > socket, and specifies it as the listening socket & awaitConnections(): which accepts incoming client connection requests and forks a child server for each successful request.
+  > socket, and specifies it as the listening socket; and awaitConnections(): which accepts incoming client connection requests and forks a child server for each successful request.
 		
 Once the Startup was complete, I implemented the display of the menu and user input on the client side.
 	
 **MENU:**
   > Menu is displayed to the user via displayMenu(). getMenuInput() is then called to retrieve the user's input. getMenuInput() is self-validating, so if the  user's entry is not a valid command,
-  > it returns the value of a recursive call to itself, so that upon valid entry, the user's valid entry bubbles up to the surface and is returned to main. I also noticed that entering more than
+  > it returns the value of a recursive call to itself, so that upon valid entry, the user's valid entry bubbles up to the surface and is returned to main(). I also noticed that entering more than
   > a single character caused issues because of the recursive call (entering -1 would prompt the user twice more because of the unused 1), so I tweaked it a bit to accept up to 80 characters of
   > (obviously invalid) input that will be discarded, so that the user simply receives another prompt.
 
-Once the menu was complete, I then began implementing the displayRecord menu option,
+Once the menu was complete, I then began implementing the Display Record menu option,
 as it would be needed to check the success of all other menu options and also
 contained a lot of code that could be reused for the other menu options, especially
-changeRecord. We'll go over this one a little more in depth, so as to understand
+Change Record. We'll go over this one a little more in depth, so as to understand
 the basic structure of the client and server for handling messages.
 	
 **DISPLAY RECORD:**  
-  > When the user chooses Display Record from the menu, the displayRecord() method is called which performs all the necessary method calls. First, displayRecord needs the number of records, but
+  > When the user chooses Display Record from the menu, the displayRecord() method is called which performs all the necessary method calls. First, displayRecord() needs the number of records, but
   > since this will be needed for other menu options, as well, I decided to implement the retrieval of the number of records into its own method getCount().
 		
   >**GETCOUNT():**
->   > getCount is passed the message queue ID and the client PID, since it will be sending and receiving messages to/from the server. The client constructs a generic Packet with msgType 1,
->   > sender cliPID, and cmd "CNT". This message is then passed along with the message queue ID to sendMsg() as its second parameter, which accepts any Packet type using a template class
+>   > getCount() is passed the message queue ID and the client PID, since it will be sending and receiving messages to/from the server. The client constructs a generic Packet with msgType 1,
+>   > sender cliPID, and cmd "CNT". This message packet is then passed along with the message queue ID to sendMsg() as its second parameter, which accepts any Packet type using a template class
 >   > MsgPacket. I decided to design it this way to make sending messages simpler, so that all I have to do is package up the message appropriately and pass it to be sent. The addition of the
 >   > template class was also very useful as I considered creating multiple method definitions for each packet type, but was now able to use just a single method. The receiveMsg() method on the
->   > client side is designed in the same way, except it passes the MsgPacket by reference so as to keep the changes outside of the methods scope. This way, to receive a message, I just need to
+>   > client side is designed in the same way, except it passes the MsgPacket by reference so as to keep the changes outside of the method's scope. This way, to receive a message, I just need to
 >   > pass the message queue id, the client's pid, and an instance of whatever packet type the client is expecting to receive.
 >   > 
 >   > Meanwhile, the server is infinitely looping in receiveMsgs(), awaiting incoming messages. The server receives and stores all messages in a serPacket, which inherits from all other Packet
 >   > types. I designed it this way because unlike the client, the server does not know which packet type to expect, as multiple clients are making requests at once and the menu operations are
->   > not performed atomically. Upon receipt of the message, it passes the message, the message queue ID and the file pointer to the bin file to handleCmd(), which essentially acts as a switch
+>   > not performed atomically. Upon receipt of the message, it passes the message, the message queue ID and the bin file's file pointer to handleCmd(), which essentially acts as a switch
 >   > on the cmd field, performing the appropriate actions for each command.
 >   >
 >   > For the CNT command, the server calls getTotalRecords(), which calculates
 >   > the total number of records in the file by seeking to the beginning of the
->   > file and incrementing a ctr while looping with fgets through the file. Once
+>   > file and incrementing a ctr while looping with fgets() through the file. Once
 >   > the number of records is calculated, the msgType and the sender of the serPacket
 >   > are updated and it's msgType, sender, and cmd fields along with the total
 >   > number of records are used to construct an intPacket, which is then passed
 >   > to sendMsg() on the server side. sendMsg() is designed the same way as on the
 >   > client side, allowing all message packet types to be sent through this single method.
 >   >
->   > Back on the client side, getCount() passes the message queue id, the client's PID and an intPacket to receiveMsg(), where it receives the server's response getCount() then returns the val
+>   > Back on the client side, getCount() passes the message queue id, the client's PID and an intPacket to receiveMsg(), where it receives the server's response. getCount() then returns the val
 >   > field of the received intPacket back to displayRecords().
 		
   > Once the number of records is retrieved, promptSelRecord() is called and passed the number of records and a value of true to include the all records option (-999), in which the client is
@@ -211,12 +222,12 @@ the basic structure of the client and server for handling messages.
   > sendMsg() and the Data Labels are printed to the screen to prepare for printing the record(s).
   >
   > On receipt of this message, the server passes it to handleCmd() along with msgID and cliPID and checks the value of the val field. If the value is not -999, it calls sendRecord() passing it
-  > the file pointer, msgID, desired index, and the pid of the requesting client. sendRecord() then calls getRecord(), passing it the filepointer and the desired index, which uses fseek and
-  > fgets to retrieve and return the desired record. sendRecord() then constructs a recPacket, setting its msgType and sender appropriately, and inserting the selected record into it before
+  > the file pointer, msgID, desired index, and the pid of the requesting client. sendRecord() then calls getRecord(), passing it the filepointer and the desired index, which uses fseek() and
+  > fgets() to retrieve and return the desired record. sendRecord() then constructs a recPacket, setting its msgType and sender appropriately, and inserting the selected record into it before
   > passing it to sendMsg() to be sent back to the client.
   >
   > If the desired index value was -999, sendAllRecords() is called which calls getTotalRecords() to calculate the total number of records, which is then used to iterate through each possible
-  > record index, passing said record index as its idx parameter. sendAllRecords() then returns the number of recordssent to the client. After a record(s) have been sent to the client,
+  > record index, passing said record index as its idx parameter. sendAllRecords() then returns the number of records sent to the client. After a record(s) have been sent to the client,
   > logRequest() is called to log the operation in the server log which is serverLog.txt by default.
   
   > **LOGREQUEST():**
@@ -226,7 +237,7 @@ the basic structure of the client and server for handling messages.
 >   > logRecord(cliPID, 'G', -1, 1);
 		
   > Back on the client side, a recPacket is passed to receiveMsg() and the message containing the record is received. The record field of the recPacket is passed to printRecord, which constructs
-  > an instance of the DataRecord class and calls it's printRecord function (used in Project 1) which prints the record. I decided to reuse this DataRecord class, as it already performs the
+  > an instance of the DataRecord class and calls its printRecord() function which prints the record. I decided to reuse this DataRecord class, as it already performs the
   > parsing in its constructor which simply requires a string argument. The DataRecord class also contains methods to automatically set the precision for all float data types.
   >
   > In the case that the user entered -999, the receiveMsg() and printRecord() calls are simply looped as many times as there are records.
@@ -240,7 +251,7 @@ the basic structure of the client and server for handling messages.
   >
   > changeRecord() then calls displayFieldMenu() which will print the menu options for the editable fields. I chose to only allow the Accessories, Hardware, and Software fields to be edited, as
   > editing the date would allow holes in the data and updating the Total field without updating any of the other 3 fields would cause the Total field to become meaningless. So, instead, the
-  > total field will automatically be updated on editing any of the other 3 fields so as to accurately represent the total.
+  > total field will automatically be updated on editing any of the other 3 fields, so as to accurately represent the total.
   >
   > changeRecord() then calls getMenuInput() which prompts the user to select an editable field from the menu. I decided at this point to change getMenuInput() to include a boolean parameter
   > indicating whether or not the menu input was for the main menu or not. I was going to create a separate method for the field menu input, but realized the code was exactly the same as
@@ -248,20 +259,20 @@ the basic structure of the client and server for handling messages.
   > this case, since getMenuInput() is receiving input for the field menu and not the main menu, getMenuInput() will be passed false. getMenuInput() will then return the char representing the
   > field selected from the menu.
   >
-  > This char is then passed to the promptFloatField method, which prompts the user for a float field value, validates it, reprompting if necessary, and then returns the entered value. I wrote
+  > This char is then passed to the promptFloatField() method, which prompts the user for a float field value, validates it, reprompting if necessary, and then returns the entered value. I wrote
   > this method generically, using the char passed to the method to determine which field to prompt for, as this method can later be reused for adding a new Record.
   >
-  > Once promptFloatField returns, the field values can now be updated. In order to do this, I first added set<Fieldname>() methods to the DataRecord class, as they were not needed in the last
+  > Once promptFloatField() returns, the field values can now be updated. In order to do this, I first added set<Fieldname>() methods to the DataRecord class, as they were not needed in the last
   > project. Additionally, I added a method to DataRecord that updates the value for Total, based off of the values for the Accesssories, Hardware, and Software fields called updateTotal() and I
   > also implemented a toCString() method that returns the DataRecord object as a C-string, allowing easier conversion to be passed to the server. A default constructor was also added to
   > DataRecord to allow for declaration and initialization to occur separately.
   >
   > Now that these are added, a switch is simply used to determine which one to call based off of the user's selection from the menu. Then the updateTotal() method of the DataRecord is called to
-  > update the total. A intRecPacket is constructed with the appropriate msgType and sender, a cmd value of "FIX", a record value of the DataRecord.toString() and a val value of the record's \
-  > index. The intRecPacket is then sent to the server using sendMsg();
+  > update the total. An intRecPacket is constructed with the appropriate msgType and sender, a cmd value of "FIX", a record value of the DataRecord.toString() and a val value of the record's 
+  > index. The intRecPacket is then sent to the server using sendMsg().
   >
   > When the server receives the intRecPacket containing the updated record, it calls handleCmd() which calls updateRecord() passing it the file pointer, the index of the record, the updated
-  > record, and the record size. updateRecord() seeks to the record and overwrites it in the file. updateRecord() returns a boolean value indicating its success. A intRecPacket is then
+  > record, and the record size. updateRecord() seeks to the record and overwrites it in the file. updateRecord() returns a boolean value indicating its success. An intRecPacket is then
   > constructed, setting the proper msgType and sender, inserting the index of the updated record, and the accompanying acknowledgment message (SUCCESS or FAILURE). This packet is then sent to
   > the client via sendMsg(). The server then logs the request, by calling logRequest(), passing it the client's PID, a cmd value of 'F' to indicate the server received the "FIX" command, -1 for 
   > the numRecords as it is irrelevant for this operation, and the index of the updated record.
@@ -288,7 +299,7 @@ the basic structure of the client and server for handling messages.
   > A recPacket was originally going to be used for this method, however, since the server uses a serPacket to receive any incoming messages, the val data member was declared before the record
   > field in the struct and recPacket does not contain a val field, the record field of the received message was being offset by 4 bytes, cutting off the month in the record string. Attempting
   > to switch the order of declaration within the intRecPacket struct fixed this issue, however, it caused the displayRecord option to become unusable, as the val field of the received message
-  > on the server side was being corrupted, due to intPacket'slack of a record field. Therefore, the most effective solution was to utilize an intRecPacket and pass a val field value of -1. This
+  > on the server side was being corrupted, due to intPacket's lack of a record field. Therefore, the most effective solution was to utilize an intRecPacket and pass a val field value of -1. This
   > issue was not made apparent until now, as although recPackets were transmitted previously, they were transmitted by the server side to the client side, where the expected packet type is
   > passed to receiveMsg(), whereas in this instance, the server does not know what type of packet to expect.
   >
@@ -308,16 +319,16 @@ the basic structure of the client and server for handling messages.
   >
   > Upon receipt of the message, the server passes it to handleCmd(), along with the message queue ID, and the file pointer to the bin file. From here, getTotalLogRecords() is called which
   > calculates the total number of log records in the server log in a similar fashion to getTotalRecords() using fgets(). The MAXLOGRECORDSIZE is used in this method to allow the buffer to store 
-  > all records. The LOGFILENAME is also stored as a global in p2ser.cpp, so as to allow easier updating of the server log file name, in the case that it needs to be changed.
+  > all records. The LOGFILENAME is also stored as a constant in server.cpp's main(), so as to allow easier updating of the server log file name, in the case that it needs to be changed.
   >
   > MAXLOGRECORDSIZE is set at 64, as the longest log entry message in LogRequest() is the server response for showing the log, which contains 56 characters, plus a maximum of 5 characters for
   > the pid (32768 is max), and an extra 3 characters for the record number, as the bin file is highly unlikely to exceed 999 records at this point in time. If at any point the storage capability
-  > of the bin file exceeds this assumption, the MAXLOGRECORDSIZE constant can easily be updated in the MsgQPackets.h file.
+  > of the bin file exceeds this assumption, the MAXLOGRECORDSIZE constant can easily be updated in the MsgQPackets.cpp file.
   >
   > The server then sends the number of total log records back to the client via sendMsg(). After sending the number of total log records back to the client, the server then calls sendLog(),
   > passing it the message queue ID, the client's PID, and the number of records in the log file.
   >
-  > sendLog() opens the file for reading, and loops for as many records there are in the log file. For each loop, sendLogRecord() is called and passed the log file pointer, the message queue ID,
+  > sendLog() opens the file for reading, and loops for as many records there are in the log file. For each loop, sendLogRecord() is called and passed a file pointer to the log file, the message queue ID,
   > and the client's PID.
   >
   > sendLogRecord() reads a record from the log file, constructs a logPacket using the proper msgType and sender, and the retrieved log record. The log record is then sent to the client via
@@ -328,7 +339,7 @@ the basic structure of the client and server for handling messages.
 
 **Readers-Writers Problem:**  
   
-  For the Readers Writers Problem, I first designed and implemented a wrapper class, 
+  For the Readers-Writers Problem, I first designed and implemented a wrapper class, 
   SemaphoreSet, that constructs a System V semaphore set given a key, the number of 
   semaphores, and the perm flags. The class contains methods for all standard semaphore
   operations, such as: signal(), wait(), set(), get(), getAll(), setAll(), retrieving
@@ -337,7 +348,7 @@ the basic structure of the client and server for handling messages.
   code organized and not clutter the code with the construction of semun and sembuf 
   structures for semop() and semctl() calls. 
   
-  I then designed and implemented a class, LogBinRWSemMonitor that implements a Monitor
+  I then designed and implemented a class, LogBinRWSemMonitor, that implements a Monitor
   for synchronizing readers and writers for both the bin and log files using the 
   SemaphoreSet class. The Monitor is constructed using the key to be used for the 
   SemaphoreSet. add\*\*\*Reader() and add\*\*\*Writer() methods perform the pre-CS semaphore
@@ -345,7 +356,7 @@ the basic structure of the client and server for handling messages.
   semaphore operations. This further increased the organization of my code and improved
   the simplicity of handling Critical Sections on the server-side, as each call to a
   purely reading and writing method simply must be enclosed with the corresponding
-  add*** and rem*** methods. Additionally, my design of these classes allowed me 
+  add\*\*\* and rem\*\*\* methods. Additionally, my design of these classes allowed me 
   to maintain the Monitor objects between parent and child server processes utilizing
   the semget() call's retrieval of the semaphore id for a provided key. This allowed
   me to simply construct the Monitor object in the parent and initialize the default 
@@ -373,7 +384,7 @@ the basic structure of the client and server for handling messages.
   issues a command, or produces an unintended result (in a more general case where 
   the same field is not edited by both parties). This could simply be avoided by
   allowing the writer to momentarily suspend all readers while it updates the record.
-  While the effect of this seems small, it's effects quickly scale with the number of
+  While the effect of this seems small, its effects quickly scale with the number of
   clients. This same concept applies for adding new records. 
   
   For the dataset, I utilized 2 mutexes for the reader and writer counts, a mutex
@@ -392,10 +403,26 @@ the basic structure of the client and server for handling messages.
   access and making readers wait until writers are finished, and a counting semaphore
   for the readercount.
 
+  Seeing as though the server needed to manage the manipulation of a potentially
+  unbounded dataset receiving requests by a conceivably large number of clients, I needed
+  to apply the principle of Parsimony for a few critical aspects in order to minimize my
+  application’s use of system resources. First, I applied this principle when it came to
+  transmitting messages between the server and all of its connecting clients, by only
+  transmitting data necessary for the issued command, increasing the application’s
+  responsiveness. When it came to transmitting the contents of the dataset or the logfile, I
+  ensured that only one record was transmitted and stored at a time, as the dataset could
+  presumably continue to grow over time. While this required an increased number of
+  transmitted messages, it simultaneously held allocation on the stack to a minimum, since
+  a retrieved record is removed from memory by the time the next data record is retrieved,
+  which I found to be much more advantageous. Lastly, when it came to updating records, I
+  wanted to make sure that write operations to the dataset were kept to a minimum by only
+  updating the single specified record in the binary data file rather than rewriting the file
+  with the updated record included.
+
 **Known Bugs:**  
 
   Unfortunately I was unable to implement Shared Memory or Signals, as I really
-  struggled with creating an algorithm for handling the Readers Writers Problem.
+  struggled with creating an algorithm for handling the Readers-Writers Problem.
   It had seemed that I had developed a working solution, as the majority of my tests
   were working for me and printing out the status of the readers and writers seemed 
   to show that writers and readers were not accessing the Critical section at the same time,
