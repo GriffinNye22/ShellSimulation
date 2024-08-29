@@ -114,7 +114,7 @@ to construct the appropriate packet type to be sent back to the client.
 ```cpp
 logPacket: public Packet {
   long msgType;                  //Recipient of the message
-  pid_t sender;									 //Sender of the message
+  pid_t sender;			 //Sender of the message
   char[3] cmd;                   //Command to be sent
   char record[MAXLOGRECORDSIZE]; //Log record string
 }
